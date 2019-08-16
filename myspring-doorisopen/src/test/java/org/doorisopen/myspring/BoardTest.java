@@ -12,16 +12,28 @@ public class BoardTest {
 		System.out.println("Hello DI - XML");
 		
 		ac = new GenericXmlApplicationContext("Testcontext.xml");
-		BoardService service = (BoardService)ac.getBean("boardService");
+		/* Method 1. annotation-config
+		BoardService service = (BoardService)ac.getBean("boardService"); // by Component name
+		*/
+		// Method 2. context:component-scan
+		BoardService service = (BoardService)ac.getBean(BoardService.class); // by Class name
 		
 		BoardVO vo = new BoardVO();
-		vo.setBoardTitle("첫 번째 게시글 테스트");
+		vo.setBoardTitle("두 번째 게시글 테스트");
 		
 		service.BoardWrite(vo);
 		
-		vo = service.BoardDetail("첫 번째 게시글 테스트");
+		vo = service.BoardDetail("두 번째 게시글 테스트");
 		System.out.println(vo);
 	}
-	
-	
 }
+
+
+
+
+
+
+
+
+
+

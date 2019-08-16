@@ -8,20 +8,17 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-	
-	<!-- boardDAO DI by doorisopen -->
+	<!-- Annotation DI by doorisopen -->
+	<!-- Method 1. annotation-config -->
+	<!-- 
 	<bean id="boardDAO" class="org.doorisopen.myspring.Board.Persistence.BoardDAOImpl">
 	</bean>
-
-	<!-- Method 1 Contructor Injection (생성자 방식) -->
 	<bean id="boardService" class="org.doorisopen.myspring.Board.Service.BoardServiceImpl">
-		<constructor-arg ref="boardDAO"/>
 	</bean>
-	
-	<!-- Method 2 Setter Injection (설정자 방식) 
-	<bean id="boardService" class="org.doorisopen.myspring.Board.Service.BoardServiceImpl">
-		<property name="boardDAO" ref="boardDAO"/>
-	</bean>	
+	<context:annotation-config></context:annotation-config>
 	-->
+	
+	<!-- Method 2. context:component-scan -->
+	<context:component-scan base-package="org.doorisopen.myspring.Board"></context:component-scan>
 	
 </beans>

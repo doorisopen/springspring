@@ -4,17 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.doorisopen.myspring.Board.Domain.BoardVO;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BoardDAOImpl implements BoardDAO{
 	
 	private Map<String, BoardVO> storage = new HashMap<String, BoardVO>();
 	
 	@Override
 	public void boardWrite(BoardVO vo) throws Exception {
-		
 		storage.put(vo.getBoardTitle(), vo);
-	
 	}
 
 	@Override
