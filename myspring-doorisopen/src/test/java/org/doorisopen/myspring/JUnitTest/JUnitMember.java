@@ -19,7 +19,7 @@ public class JUnitMember {
 	
 	@Test
 	public void testReadMember( ) throws Exception {
-		MemberVO member = memberService.readMember("hansol");
+		MemberVO member = memberService.readMember("Anonymous");
 		System.out.println(member);
 	}
 
