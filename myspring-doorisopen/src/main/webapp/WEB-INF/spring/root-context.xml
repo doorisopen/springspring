@@ -8,6 +8,28 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-		
-		
+	
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/myspring?useSSL=false&amp;serverTimezone=UTC"></property>
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<property name="maxActive" value="5" />
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<context:component-scan base-package="org.doorisopen.myspring.Member.Service"></context:component-scan>
+	<context:component-scan base-package="org.doorisopen.myspring.Member.Persistence"></context:component-scan>
+	
+	<context:component-scan base-package="org.doorisopen.myspring.Board.Service"></context:component-scan>
+	<context:component-scan base-package="org.doorisopen.myspring.Board.Persistence"></context:component-scan>
+	
 </beans>

@@ -90,6 +90,13 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- hibernate by doop -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+		</dependency>
+		
 		<!-- Spring Test by doop -->
 		<dependency>
 			<groupId>org.springframework</groupId>
