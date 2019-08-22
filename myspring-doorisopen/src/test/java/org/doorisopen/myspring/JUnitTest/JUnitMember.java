@@ -22,6 +22,4 @@ public class JUnitMember {
 		MemberVO member = memberService.readMember("Anonymous");
 		System.out.println(member);
 	}
-
-
 }

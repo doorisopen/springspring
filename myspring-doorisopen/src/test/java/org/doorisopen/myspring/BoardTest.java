@@ -19,11 +19,11 @@ public class BoardTest {
 		BoardService service = (BoardService)ac.getBean(BoardService.class); // by Class name
 		
 		BoardVO vo = new BoardVO();
-		vo.setBoardTitle("두 번째 게시글 테스트");
+		vo.setBoardTitle("1�� �Խñ�");
 		
 		service.BoardWrite(vo);
 		
-		vo = service.BoardDetail("두 번째 게시글 테스트");
+		vo = service.BoardDetail("1�� �Խñ�");
 		System.out.println(vo);
 	}
 }
