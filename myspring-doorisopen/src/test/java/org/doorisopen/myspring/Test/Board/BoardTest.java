@@ -15,7 +15,6 @@ public class BoardTest {
 	private static final Logger logger = LoggerFactory.getLogger(urlControllerTest.class);
 	
 	// GET, POST URL TEST
-	
 	// GET Test
 	// http://localhost:8080/myspring/BoardPage
 	@RequestMapping(value="/BoardPage", method = RequestMethod.GET)
@@ -33,5 +32,7 @@ public class BoardTest {
 		logger.info(" /BoardCreate URL POST method called. then BoardCreate method executed.");
 		return "/urlControllerTest/BoardResult";
 	}
+	
+	
 	
 }

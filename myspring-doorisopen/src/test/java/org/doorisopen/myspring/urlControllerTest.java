@@ -58,7 +58,21 @@ public class urlControllerTest {
 		return "/urlControllerTest/result_a";
 	}
 	
+	// Forward & Redirect TEST
+	// Forward TEST
+	@RequestMapping(value="/tryFwd", method = RequestMethod.GET)
+	public String getUserTest4( @ModelAttribute("msg") String msg ) {
+		logger.info(msg);
+		logger.info(" /tryFwd URL called. then getUserTest4 method executed.");
+		return "forward:/tryB";
+	}
 	
-	
+	// Redirect TEST
+	@RequestMapping(value="/tryRdt", method = RequestMethod.GET)
+	public String getUserTest5( @ModelAttribute("msg") String msg ) {
+		logger.info(msg);
+		logger.info(" /tryRdt URL called. then getUserTest5 method executed.");
+		return "redirect:/tryB";
+	}
 	
 }
