@@ -3,15 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- REST XML TEST -->
 	<bean id="globalValidator"  class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 	</bean>
 	
-	
+	<!-- DataSource bean 등록 by doop -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/myspring?useSSL=false&amp;serverTimezone=UTC"></property>
@@ -20,13 +25,23 @@
 		<property name="maxActive" value="5" />
 	</bean>
 	
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<constructor-arg ref="dataSource" />
+	<!-- 트랜잭션 관리자 빈 등록 by doop -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> 
+	
+	<!-- MyBatis의 SqlSessionFactory 빈 등록 by doop -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+      	<property name="mapperLocations" value="classpath:mappers/*Mapper.xml"></property> 
 	</bean>
 	
-	<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-		<constructor-arg ref="dataSource" />
+	<!-- Mybatis-Spring의 SqlSessionTemplate 빈 등록 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
 	
 	<context:component-scan base-package="org.doorisopen.myspring.Member.Service"></context:component-scan>
 	<context:component-scan base-package="org.doorisopen.myspring.Member.Persistence"></context:component-scan>
