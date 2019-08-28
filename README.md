@@ -19,5 +19,5 @@
 * <a href="https://github.com/doorisopen/SpringSpring/tree/32a25bd697f6d704738f4461d6c11267c3f14853"><strong>6 - Controller</strong></a>
 * <a href="https://github.com/doorisopen/SpringSpring/tree/3ecbbf611fbc64dd06ea8f88e2257b88ae3323c3"><strong>7 - Forward와 Redirect</strong></a>
 * <a href="https://github.com/doorisopen/SpringSpring/tree/b81f8c5a711261978d6aaf956e60f98da34ed9d0"><strong>8 - Rest 아키텍처</strong></a>
-<br/>_위에 까지 완료_<br/>
 * <a href="https://github.com/doorisopen/SpringSpring/tree/55e32924a3b2bbb9e287e7765e9d234f16d8cb4e"><strong>9 - 예외 처리</strong></a>
+<br/>_위에 까지 완료_<br/>
