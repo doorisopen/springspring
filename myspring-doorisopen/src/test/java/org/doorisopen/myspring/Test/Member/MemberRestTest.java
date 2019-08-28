@@ -42,7 +42,6 @@ private static final Logger logger = LoggerFactory.getLogger(urlControllerTest.c
 		return new ResponseEntity<MemberVO>(vo, headers, HttpStatus.OK);
 	}
 	
-	// XXXXXXXXXXXXXXXXXXX 기능수행 실패 XXXXXXXXXXXXXXXXXXX
 	// Xml GET
 	// 
 	@RequestMapping(value="/xml/{id}", method = RequestMethod.GET)
