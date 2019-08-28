@@ -25,5 +25,17 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> readMemberList() throws Exception{
 		return memberDAO.readList();
 	}
+
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteMember(String id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

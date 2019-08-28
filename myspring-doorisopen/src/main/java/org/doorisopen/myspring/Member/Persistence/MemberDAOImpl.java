@@ -26,7 +26,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO read(String id) throws Exception {
 		MemberVO vo = null;
 		try {
-				vo = jdbcTemplate.queryForObject( "SELECT * FROM STUDENT WHERE ID=?", new BeanPropertyRowMapper<MemberVO>(MemberVO.class), id);
+				vo = jdbcTemplate.queryForObject( "SELECT * FROM student WHERE ID=?", new BeanPropertyRowMapper<MemberVO>(MemberVO.class), id);
 		}
 		catch(EmptyResultDataAccessException e) {
 			return vo;
