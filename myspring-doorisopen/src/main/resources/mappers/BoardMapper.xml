@@ -6,30 +6,67 @@
 <mapper namespace="org.doorisopen.myspring.Board.BoardMapper">
 
 	<!-- 게시글 등록 -->
-	<insert id="BoardRegister" parameterType="BoardVO">
-	
+	<insert id="BoardCreate" parameterType="BoardVO">
+	INSERT INTO
+	board 
+	(
+		boardTitle,
+		boardContent,
+		writer,
+		writeDate
+	) VALUES (
+		#{boardTitle},
+		#{boardContent},
+		#{writer},
+		now()
+	)
 	</insert>
 	
     <!-- 게시글 리스트 -->
-    <select id="BoardList" resultType="BoardVO">
+    <select id="BoardRead" resultType="BoardVO">
  	 <![CDATA[
-
+		SELECT
+			*
+		FROM
+			board
+		WHERE
+			enabled = '1'
+		ORDER BY
+ 			boardIdx DESC
  	 ]]> 
  	</select>
     
     <!-- 게시글 조회 -->
     <select id="BoardDetail" resultType="BoardVO">
-    
+    	SELECT
+    		*
+    	FROM
+    		board
+    	WHERE
+    		boardIdx = #{boardIdx}
  	</select>
  	
     <!-- 게시글 수정 -->
     <update id="BoardUpdate">
-    
+    	UPDATE
+    		board
+    	SET
+    		boardTitle = #{boardTitle}
+    		, boardContent = #{boardContent}
+			, modifier = #{modifier}
+			, modifyDate = now()
+		WHERE
+			boardIdx = #{boardIdx}
  	</update>
  	
     <!-- 게시글 삭제 -->
     <delete id="BoardDelete">
-    
+    	UPDATE
+    		board
+    	SET
+    		enabled = '0'
+    	WHERE
+    		boardIdx = #{boardIdx}
  	</delete>
  	
 </mapper>

@@ -17,7 +17,7 @@ public class BoardTest {
 	// GET, POST URL TEST
 	// GET Test
 	// http://localhost:8080/myspring/BoardPage
-	@RequestMapping(value="/BoardPage", method = RequestMethod.GET)
+	@RequestMapping(value="/Test/BoardPage", method = RequestMethod.GET)
 	public String BoardCreatePage() {
 
 		logger.info(" /BoardPage URL GET method called. then BoardCreatePage method executed.");
@@ -26,7 +26,7 @@ public class BoardTest {
 	
 	// POST Test
 	// http://localhost:8080/myspring/BoardCreate
-	@RequestMapping(value="/BoardCreate", method = RequestMethod.POST)
+	@RequestMapping(value="/Test/BoardCreate", method = RequestMethod.POST)
 	public String BoardCreate(@ModelAttribute("board") BoardVO vo) {
 		logger.info(vo.toString());
 		logger.info(" /BoardCreate URL POST method called. then BoardCreate method executed.");

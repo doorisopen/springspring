@@ -21,9 +21,10 @@ public class BoardTest {
 		BoardVO vo = new BoardVO();
 		vo.setBoardTitle("1번 게시글");
 		
-		service.BoardWrite(vo);
+		service.BoardCreate(vo);
 		
-		vo = service.BoardDetail("1번 게시글");
+		// vo = service.BoardRead("1번 게시글");
+		
 		System.out.println(vo);
 	}
 }
