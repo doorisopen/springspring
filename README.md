@@ -23,4 +23,4 @@
 * <a href="https://github.com/doorisopen/SpringSpring/tree/1dd8527099f303ac3cb42e088f704a5886119e04"><strong>10 - MyBatis</strong></a>
 * <a href="https://github.com/doorisopen/SpringSpring/tree/a35c247f378afe65b935df99520d57f00d2d4d7c"><strong>11 - 게시판 만들기① (CRUD JUnit Test)</strong></a>
 <br/>_위에 까지 완료_<br/>
-* <a href="#"><strong>11 - 게시판 만들기② (MVC)</strong></a>
+* <a href="#"><strong>12 - 게시판 만들기② (MVC)</strong></a>
