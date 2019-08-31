@@ -7,7 +7,6 @@
 * Spring tool suite-4.1.2
 * Apache tomcat 9.0v
 * Java 1.8
-*
 
 
 ### Development Stage
