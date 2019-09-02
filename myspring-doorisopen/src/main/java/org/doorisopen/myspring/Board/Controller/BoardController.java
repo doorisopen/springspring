@@ -1,9 +1,17 @@
 package org.doorisopen.myspring.Board.Controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.doorisopen.myspring.Board.Domain.BoardVO;
 import org.doorisopen.myspring.Board.Service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,6 +22,7 @@ public class BoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
+	@Autowired
 	private BoardService service;
 	
 	/* 게시글 작성 화면
@@ -21,21 +30,26 @@ public class BoardController {
 	 *
 	 */
 	@RequestMapping(value="/boardCreateView", method = RequestMethod.GET)
-	public String BoardCreateView() {
+	public String BoardCreateView() throws Exception {
 		
 		
-		return "/Board/BoardCreate";
+		return "/Board/boardCreate";
 	}
 	
 	/* 게시글 작성
 	 * 
 	 *
 	 */
-	@RequestMapping(value="/boardCreate", method = RequestMethod.POST)
-	public String BoardCreate() {
-	
+	@RequestMapping(value = "/boardCreate", method = RequestMethod.POST)
+	public String BoardCreate(HttpServletRequest request, @ModelAttribute BoardVO vo) throws Exception {
+
+		System.out.println("boardTitle : "+ request.getParameter("boardTitle"));
+    	System.out.println("boardContent : "+ request.getParameter("boardContent"));
+    	System.out.println("writer : "+ request.getParameter("writer"));
 		
-		return "/Board/BoardCreate";
+		service.BoardCreate(vo);
+		
+		return "redirect:/Board/boardRead";
 	}
 	
 	/* 게시글 리스트
@@ -43,9 +57,15 @@ public class BoardController {
 	 *
 	 */
 	@RequestMapping(value = "/boardRead", method = RequestMethod.GET)
-	public String BoardRead() {
+	public String BoardRead(Model model,BoardVO vo) throws Exception {
+
+		System.out.println(service.BoardRead(vo));
 		
-		return "/Board/BoardRead";
+		List<BoardVO> boardRead = service.BoardRead(vo);
+		model.addAttribute("boardRead", boardRead);
+		
+		
+		return "/Board/boardRead";
 	}
 	
 	
@@ -54,9 +74,11 @@ public class BoardController {
 	 *
 	 */
 	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
-	public String BoardDetail() {
+	public String BoardDetail(Model model, BoardVO vo, @ModelAttribute("boardIdx") int boardIdx) throws Exception {
 		
-		return "/Board/BoardDetail";
+		vo = service.BoardDetail(boardIdx);
+		model.addAttribute("boardDetail", vo);
+		return "/Board/boardDetail";
 	}
 	
 	
@@ -65,9 +87,10 @@ public class BoardController {
 	 *
 	 */
 	@RequestMapping(value = "/boardUpdateView", method = RequestMethod.GET)
-	public String BoardUpdateView() {
-		
-		return "/Board/BoardUpdate";
+	public String BoardUpdateView(Model model, BoardVO vo, @ModelAttribute("boardIdx") int boardIdx) throws Exception {
+		vo = service.BoardDetail(boardIdx);
+		model.addAttribute("boardUpdate", vo);
+		return "/Board/boardUpdate";
 	}
 	
 	/* 게시글 수정
@@ -75,19 +98,20 @@ public class BoardController {
 	 *
 	 */
 	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
-	public String BoardModify() {
+	public String BoardModify(@ModelAttribute BoardVO vo, @ModelAttribute("boardIdx") int boardIdx) throws Exception {
+		service.BoardUpdate(vo);
 		
-		return "/Board/BoardUpdate";
+		return "redirect:/Board/boardDetail";
 	}
 	
 	/* 게시글 삭제
 	 * 
 	 *
 	 */
-	@RequestMapping(value = "/boardDelete", method = RequestMethod.POST)
-	public String BoardDelete() {
-		
-		return "/Board/Board";
+	@RequestMapping(value = "/boardDelete", method = RequestMethod.GET)
+	public String BoardDelete(@ModelAttribute("boardIdx") int boardIdx) throws Exception {
+		service.BoardDelete(boardIdx);
+		return "redirect:/Board/boardRead";
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.doorisopen.myspring.Test.Board;
 
+import org.doorisopen.myspring.Board.Controller.BoardController;
 import org.doorisopen.myspring.Board.Domain.BoardVO;
 import org.doorisopen.myspring.Board.Service.BoardService;
 import org.junit.Test;
@@ -7,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.ui.Model;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
@@ -16,7 +18,7 @@ public class BoardCRUDTest {
 	BoardService service;
 	
 	// Test 가 필요한곳에 아래의 태그 입력한다.
-	@Test
+	
 	public void boardCreateTest() {
 		System.out.println("This is boardCreateTest...");
 		BoardVO vo = new BoardVO();
@@ -34,6 +36,8 @@ public class BoardCRUDTest {
 		}
 	}
 	
+	
+	@Test
 	public void boardReadTest() {
 		System.out.println("This is boardReadTest...");
 		BoardVO vo = new BoardVO();
@@ -82,5 +86,7 @@ public class BoardCRUDTest {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

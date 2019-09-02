@@ -2,7 +2,7 @@ package org.doorisopen.myspring.Member.Domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+// @XmlRootElement
 public class MemberVO {
 	private String id;
 	private String passwd;
