@@ -67,4 +67,14 @@
     		boardIdx = #{boardIdx}
  	</delete>
  	
+ 	<!-- 게시글 조회수 증가 -->
+ 	<update id="BoardViewCntUpdate">
+    	UPDATE
+    		board
+    	SET
+    		boardViewCnt = boardViewCnt + 1
+		WHERE
+			boardIdx = #{boardIdx}
+ 	</update>
+ 	
 </mapper>

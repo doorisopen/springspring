@@ -70,6 +70,16 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.delete(namespace + ".BoardDelete", boardIdx);
 	}
 
+	/* 게시글 조회수 증가
+	 * 
+	 * 
+	 */
+	@Override
+	public void BoardViewCntUpdate(int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".BoardViewCntUpdate", boardIdx);
+	}
+
 	
 	
 	

@@ -1,6 +1,5 @@
 package org.doorisopen.myspring.Test.Board;
 
-import org.doorisopen.myspring.Board.Controller.BoardController;
 import org.doorisopen.myspring.Board.Domain.BoardVO;
 import org.doorisopen.myspring.Board.Service.BoardService;
 import org.junit.Test;
@@ -17,15 +16,20 @@ public class BoardCRUDTest {
 	@Autowired
 	BoardService service;
 	
-	// Test 가 필요한곳에 아래의 태그 입력한다.
 	
+	/* TEST 1. 게시글 등록 
+	 * 
+	 *
+	 */
+	// Test 가 필요한곳에 아래의 태그 입력한다.
+	@Test
 	public void boardCreateTest() {
 		System.out.println("This is boardCreateTest...");
 		BoardVO vo = new BoardVO();
 		
 		vo.setBoardTitle("First Board Test");
 		vo.setBoardContent("Hello This is Spring Board Create Test");
-		vo.setWriter("leetaewoong");
+		vo.setWriter("gangnam");
 		
 		try {
 			service.BoardCreate(vo);
@@ -36,8 +40,10 @@ public class BoardCRUDTest {
 		}
 	}
 	
-	
-	@Test
+	/* TEST 2. 게시글 리스트 
+	 * 
+	 *
+	 */
 	public void boardReadTest() {
 		System.out.println("This is boardReadTest...");
 		BoardVO vo = new BoardVO();
@@ -51,7 +57,10 @@ public class BoardCRUDTest {
 		}
 	}
 	
-	
+	/* TEST 3. 게시글 수정 
+	 * 
+	 *
+	 */
 	public void boardUpdateTest() {
 		System.out.println("This is boardUpdateTest...");
 		BoardVO vo = new BoardVO();
@@ -71,7 +80,10 @@ public class BoardCRUDTest {
 		}
 	}
 	
-	
+	/* TEST 4. 게시글 삭제 
+	 * 
+	 *
+	 */
 	public void boardDeleteTest() {
 		System.out.println("This is boardDeleteTest...");
 		BoardVO vo = new BoardVO();
@@ -86,7 +98,5 @@ public class BoardCRUDTest {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 }

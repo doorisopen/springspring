@@ -14,13 +14,14 @@
 	 <header>게시글 리스트</header>
  
 	 	<!-- Board List -->
-		<table>
+		<table border="1">
 			<thead>
 				<tr>
-					<th>NO</th>
-					<th>Title</th>
-					<th>Writer</th>
-					<th>WriteDate</th>
+					<th colspan="2">NO</th>
+					<th colspan="10">Title</th>
+					<th colspan="5">Writer</th>
+					<th colspan="5">WriteDate</th>
+					<th colspan="2">View</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,10 +29,11 @@
 				<c:when test="${fn:length(boardRead) > 0}">
 					<c:forEach items="${boardRead }" var="boardRead" varStatus="rowcnt">
 						<tr>
-							<td>${boardRead.boardIdx}</td>
-							<td><a href="/myspring/Board/boardDetail?boardIdx=${boardRead.boardIdx}">${boardRead.boardTitle}</a></td>
-							<td>${boardRead.writer}</td>
-							<td>${boardRead.writeDate}</td>
+							<td colspan="2">${boardRead.boardIdx}</td>
+							<td colspan="10"><a href="/myspring/Board/boardDetail?boardIdx=${boardRead.boardIdx}">${boardRead.boardTitle}</a></td>
+							<td colspan="5">${boardRead.writer}</td>
+							<td colspan="5">${boardRead.writeDate}</td>
+							<td colspan="2">${boardRead.boardViewCnt}</td>
 						</tr>
 					</c:forEach>
 				</c:when>

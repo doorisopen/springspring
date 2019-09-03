@@ -11,6 +11,7 @@ public class BoardVO {
 	private String modifyDate;
 	private int important;
 	private int enabled;
+	private int boardViewCnt;
 	
 	
 	public int getBoardIdx() {
@@ -84,10 +85,18 @@ public class BoardVO {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+	public int getBoardViewCnt() {
+		return boardViewCnt;
+	}
 
+	public void setBoardViewCnt(int boardViewCnt) {
+		this.boardViewCnt = boardViewCnt;
+	}
 
 	// DI XML Test by doorisopen
 	public String toString() {
 		return "BoardVO [boardIdx="+boardIdx+" boardTitle="+boardTitle+" boardContent="+boardContent+" writer="+writer+"]";
 	}
+
+	
 }

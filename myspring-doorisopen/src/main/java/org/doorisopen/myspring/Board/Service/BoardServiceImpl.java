@@ -41,6 +41,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardVO BoardDetail(int boardIdx) throws Exception {
 		// TODO Auto-generated method stub
+		
+		// 게시글 조회수 업데이트
+		dao.BoardViewCntUpdate(boardIdx);
+		
 		return dao.BoardDetail(boardIdx);
 	}
 

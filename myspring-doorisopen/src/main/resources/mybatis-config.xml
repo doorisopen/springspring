@@ -6,7 +6,6 @@
 <configuration>
   <typeAliases>
         <typeAlias type="org.doorisopen.myspring.Member.Domain.MemberVO" alias="MemberVO"/> 
-        <typeAlias type="org.doorisopen.myspring.Board.Domain.BoardVO" alias="BoardVO"/>
-        
+        <typeAlias type="org.doorisopen.myspring.Board.Domain.BoardVO" alias="BoardVO"/>    
   </typeAliases>   
 </configuration>
