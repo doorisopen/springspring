@@ -7,7 +7,7 @@
 * Spring tool suite-4.1.2
 * Apache tomcat 9.0v
 * Java 1.8
-
+* Maven
 
 ### Development Stage
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/d129bbf2a8d3a585fb650110f8713f4ec2a65bac"><strong>1 - Init Setting</strong></a>
@@ -23,6 +23,6 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/a35c247f378afe65b935df99520d57f00d2d4d7c"><strong>11 - 게시판 만들기① (CRUD JUnit Test)</strong></a>
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/4be848ca9750202f2b27ecaacaf76eec0a8131e2"><strong>12 - 게시판 만들기② (MVC)</strong></a>
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/0719d8aa98475ec0fbeb8b9fb6e6f548f3d70558"><strong>13 - 게시판 만들기③ (조회수)</strong></a>
-* [ ] <a href="#"><strong>14 - 게시판 만들기④ (페이징)</strong></a>
+* [x] <a href="https://github.com/doorisopen/SpringSpring/tree/14e8302211efcc52dc6fcd580c64daca4770ff66"><strong>14 - 게시판 만들기④ (페이징)</strong></a>
 * [ ] <a href="#"><strong>15 - 게시판 만들기⑤ (댓글, 대댓글, 댓글 수)</strong></a>
 * [ ] <a href="#"><strong>16 - 게시판 만들기⑥ (이미지 파일 업로드, 썸네일)</strong></a>
