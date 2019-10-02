@@ -1,0 +1,19 @@
+/* Board.css
+ *	
+ * made by doorisopen
+ */
+
+@charset "UTF-8";
+
+.paginationBox {
+	display: inline-block;
+}
+.pagination {
+	list-style: none;
+	padding: 0px;
+}
+
+.page-item {
+	float: left;
+	margin: 5px;
+}

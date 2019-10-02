@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.doorisopen.myspring.Board.Domain.BoardVO;
 import org.doorisopen.myspring.Board.Persistence.BoardDAO;
+import org.doorisopen.myspring.common.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +30,19 @@ public class BoardServiceImpl implements BoardService{
 	 * 
 	 */
 	@Override
-	public List<BoardVO> BoardRead(BoardVO vo) throws Exception {
+	public List<BoardVO> BoardRead(Pagination pagination) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.BoardRead(vo);
+		return dao.BoardRead(pagination);
+	}
+	
+	/* 전체 게시글 개수 확인
+	 * 
+	 * 
+	 */
+	@Override
+	public int getBoardListCnt() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getBoardListCnt();
 	}
 	
 	/* 게시글 상세
@@ -68,7 +79,5 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardDelete(boardIdx);
 	}
 
-	
-	
 	
 }

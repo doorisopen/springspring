@@ -31,8 +31,18 @@
 			board
 		WHERE
 			enabled = '1'
+		LIMIT #{startList}, #{listSize}
  	 ]]> 
  	</select>
+ 	
+ 	<!-- Pagination ListCnt -->
+ 	<select id="getBoardListCnt" resultType="int">
+		SELECT
+			count(*) AS listCnt
+		FROM
+			board
+ 	</select>
+ 	
     
     <!-- 게시글 조회 -->
     <select id="BoardDetail" resultType="BoardVO">

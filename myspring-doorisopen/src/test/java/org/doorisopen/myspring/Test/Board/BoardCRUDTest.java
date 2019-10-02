@@ -2,12 +2,12 @@ package org.doorisopen.myspring.Test.Board;
 
 import org.doorisopen.myspring.Board.Domain.BoardVO;
 import org.doorisopen.myspring.Board.Service.BoardService;
+import org.doorisopen.myspring.common.Pagination;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.ui.Model;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
@@ -16,6 +16,7 @@ public class BoardCRUDTest {
 	@Autowired
 	BoardService service;
 	
+	Pagination pagination = new Pagination();
 	
 	/* TEST 1. 게시글 등록 
 	 * 
@@ -27,16 +28,18 @@ public class BoardCRUDTest {
 		System.out.println("This is boardCreateTest...");
 		BoardVO vo = new BoardVO();
 		
-		vo.setBoardTitle("First Board Test");
-		vo.setBoardContent("Hello This is Spring Board Create Test");
-		vo.setWriter("gangnam");
-		
-		try {
-			service.BoardCreate(vo);
-			System.out.println("Success");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Pagination Test를 위한 가상 데이터
+		for(int i = 100; i < 150; i++) {
+			vo.setBoardTitle("No." + i + " Page Board Test");
+			vo.setBoardContent("Hello This is Spring Board Create Test");
+			vo.setWriter("admin");
+			try {
+				service.BoardCreate(vo);
+				System.out.println("Success");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -46,11 +49,10 @@ public class BoardCRUDTest {
 	 */
 	public void boardReadTest() {
 		System.out.println("This is boardReadTest...");
-		BoardVO vo = new BoardVO();
-		
+
 		try {
-			service.BoardRead(vo);
-			System.out.println(service.BoardRead(vo));
+			service.BoardRead(pagination);
+			System.out.println(service.BoardRead(pagination));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +75,7 @@ public class BoardCRUDTest {
 		
 		try {
 			service.BoardUpdate(vo);
-			System.out.println(service.BoardRead(vo));
+			System.out.println(service.BoardRead(pagination));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,7 +94,7 @@ public class BoardCRUDTest {
 		
 		try {
 			service.BoardDelete(boardIdx);
-			System.out.println(service.BoardRead(vo));
+			System.out.println(service.BoardRead(pagination));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
