@@ -12,13 +12,13 @@
 	(
 		boardIdx,
 		replyContent,
-		writer,
-		writeDate,
-		modifyDate,
+		replyWriter,
+		replyWriteDate,
+		replyModifyDate
 	) VALUES (
 		#{boardIdx},
 		#{replyContent},
-		#{writer},
+		#{replyWriter},
 		now(),
 		now()
 	)
@@ -36,7 +36,7 @@
 		AND
 			enabled = '1'
 		ORDER BY 
-			writeDate desc
+			replyWriteDate desc
  	 ]]> 
  	</select>
  	
@@ -47,8 +47,8 @@
     		reply
     	SET
     		replyContent = #{replyContent}
-			, modifier = #{modifier}
-			, modifyDate = now()
+			, replyModifier = #{replyModifier}
+			, replyModifyDate = now()
 		WHERE
 			replyIdx = #{replyIdx}
  	</update>

@@ -85,5 +85,5 @@
 	</div>
 	<!-- ./div center -->
 </body>
-<script src="resources/js/pagination.js"></script>
+<script src="../resources/js/pagination.js"></script>
 </html>

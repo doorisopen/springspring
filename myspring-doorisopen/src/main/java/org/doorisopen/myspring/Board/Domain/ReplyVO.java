@@ -5,10 +5,10 @@ public class ReplyVO {
 	private int replyIdx;
 	private int boardIdx;
 	private String replyContent;
-	private String writer;
-	private String writeDate;
-	private String modifier;
-	private String modifyDate;
+	private String replyWriter;
+	private String replyWriteDate;
+	private String replyModifier;
+	private String replyModifyDate;
 	private int enabled;
 	public int getReplyIdx() {
 		return replyIdx;
@@ -28,29 +28,29 @@ public class ReplyVO {
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
-	public String getWriter() {
-		return writer;
+	public String getReplyWriter() {
+		return replyWriter;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setReplyWriter(String replyWriter) {
+		this.replyWriter = replyWriter;
 	}
-	public String getWriteDate() {
-		return writeDate;
+	public String getReplyWriteDate() {
+		return replyWriteDate;
 	}
-	public void setWriteDate(String writeDate) {
-		this.writeDate = writeDate;
+	public void setReplyWriteDate(String replyWriteDate) {
+		this.replyWriteDate = replyWriteDate;
 	}
-	public String getModifier() {
-		return modifier;
+	public String getReplyModifier() {
+		return replyModifier;
 	}
-	public void setModifier(String modifier) {
-		this.modifier = modifier;
+	public void setReplyModifier(String replyModifier) {
+		this.replyModifier = replyModifier;
 	}
-	public String getModifyDate() {
-		return modifyDate;
+	public String getReplyModifyDate() {
+		return replyModifyDate;
 	}
-	public void setModifyDate(String modifyDate) {
-		this.modifyDate = modifyDate;
+	public void setReplyModifyDate(String replyModifyDate) {
+		this.replyModifyDate = replyModifyDate;
 	}
 	public int getEnabled() {
 		return enabled;
@@ -58,6 +58,9 @@ public class ReplyVO {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+	
+	
+	
 
 	
 }

@@ -8,7 +8,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="../resources/css/board.css">
 <title>DOOP</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<div align=center>
@@ -44,12 +46,9 @@
 				<form:hidden path="boardIdx" id="boardIdx" />
 				<div>
 					<div>
-						<form:textarea path="replyContent" id="replyContent" class="form-control" rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
-					</div>
-
-					<div class="col-sm-2">
-						<form:input path="replyIdx" class="form-control" id="replyIdx" placeholder="댓글 작성자"></form:input>
-						<button type="button" class="btn btn-sm btn-primary" id="btnReplySave" style="width: 100%; margin-top: 10px">저 장</button>
+						<form:textarea path="replyContent" id="replyContent" rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
+						<form:input path="replyWriter" id="replyWriter" placeholder="댓글 작성자"></form:input>
+						<button type="button" id="btnReplyCreate" style="margin-top: 10px">저 장</button>
 					</div>
 				</div>
 			</form:form>
@@ -72,15 +71,13 @@
 </body>
 
 <script>
-
-
 $(document).ready(function(){
 	showReplyList();
 });
 
 function showReplyList(){
-	var url = "${pageContext.request.contextPath}/restBoard/ReqlyRead";
-	var paramData = {"boardIdx" : "${boardContent.boardIdx}"};
+	var url = "/myspring/restBoard/replyRead";
+	var paramData = {"boardIdx" : "${boardDetail.boardIdx}"};
 	$.ajax({
            type: 'POST',
            url: url,
@@ -89,35 +86,117 @@ function showReplyList(){
            success: function(result) {
               	var htmls = "";
 		if(result.length < 1){
-			htmls.push("등록된 댓글이 없습니다.");
+		htmls += '등록된 댓글이 없습니다.';
 		} else {
 			$(result).each(function(){
-			 htmls += '<div class="media text-muted pt-3" id="rid' + this.rid + '">';
-			 htmls += '<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">';
-			 htmls += '<title>Placeholder</title>';
-			 htmls += '<rect width="100%" height="100%" fill="#007bff"></rect>';
-			 htmls += '<text x="50%" fill="#007bff" dy=".3em">32x32</text>';
-			 htmls += '</svg>';
-			 htmls += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">';
-			 htmls += '<span class="d-block">';
-			 htmls += '<strong class="text-gray-dark">' + this.writer + '</strong>';
-			 htmls += '<span style="padding-left: 7px; font-size: 9pt">';
-			 htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.writer + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a>';
-			 htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ')" >삭제</a>';
-			 htmls += '</span>';
-			 htmls += '</span>';
-			 htmls += this.content;
-			 htmls += '</p>';
+			 htmls += '<div>';
+			 htmls += '<div style="display:inline-flex;" id="replyIdx' + this.replyIdx + '">';
+			 htmls += '<div class="replyItem">' + this.replyIdx + '</div>';
+			 htmls += '<div class="replyItem"><strong>' + this.replyWriter + '</strong></div>';
+			 htmls += '<div class="replyItem">' + this.replyContent + '</div>';
+			 htmls += '<div class="replyItem"><a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.replyWriter + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a>';
+			 htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ')" >삭제</a></div>';
+			 htmls += '</div>';
 			 htmls += '</div>';
 			});	//each end
 
 		}
 		$("#replyList").html(htmls);
-
-           }// Ajax success end
+		}// Ajax success end
+		,  error:function(request,status,error){
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+     	}
 
 	});// Ajax end
 }
+
+//댓글 저장 버튼 클릭 이벤트
+$(document).on('click', '#btnReplyCreate', function(){
+	var url = "${pageContext.request.contextPath}/restBoard/replyCreate";
+	var replyContent = $('#replyContent').val();
+	var replyWriter = $('#replyWriter').val();
+	var paramData = JSON.stringify({"replyContent": replyContent
+			, "replyWriter": replyWriter
+			, "boardIdx":'${boardDetail.boardIdx}'
+	});
+	
+	var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "POST"};
+	$.ajax({
+		url: url
+		, headers : headers
+		, data : paramData
+		, type : 'POST'
+		, dataType : 'text'
+		, success: function(result){
+			showReplyList();	
+			$('#replyContent').val('');
+			$('#replyWriter').val('');
+		}
+		, error: function(error){
+			console.log("에러 : " + error);
+		}
+	});
+});
+
+
+function fn_updateReply(replyIdx, replyWriter){
+	var url = "/myspring/restBoard/replyUpdate";
+	var replyEditContent = $('#editContent').val();
+	var paramData = JSON.stringify({"replyContent": replyEditContent
+			, "replyIdx": replyIdx
+	});
+
+	var headers = {"Content-Type" : "application/json"
+			, "X-HTTP-Method-Override" : "POST"};
+	$.ajax({
+		url: url
+		, headers : headers
+		, data : paramData
+		, type : 'POST'
+		, dataType : 'text'
+		, success: function(result){
+            console.log(result);
+			showReplyList();
+		}
+		, error: function(error){
+			console.log("에러 : " + error);
+		}
+	});
+}
+
+
+function fn_editReply(replyIdx, replyWriter, replyContent){
+	var htmls = "";
+	htmls += '<div class="media text-muted pt-3" id="replyIdx' + replyIdx + '">';
+	htmls += '<strong class="text-gray-dark">' + replyWriter + '</strong>';
+	htmls += '<textarea name="editContent" id="editContent" class="form-control" rows="3">';
+	htmls += replyContent;
+	htmls += '</textarea>';
+	htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' + replyIdx + ', \'' + replyWriter + '\')" style="padding-right:5px">저장</a>';
+	htmls += '<a href="javascript:void(0)" onClick="showReplyList()">취소<a>';	
+	htmls += '</div>';
+
+	$('#replyIdx' + replyIdx).replaceWith(htmls);
+	$('#replyIdx' + replyIdx + ' #editContent').focus();
+}
+
+function fn_deleteReply(replyIdx){
+	var url = "/myspring/restBoard/replyDelete";
+	var paramData = {"replyIdx": replyIdx};
+	$.ajax({
+		url: url
+		, data : paramData
+		, type : 'POST'
+		, dataType : 'text'
+		, success: function(result){
+			showReplyList();
+		}
+		, error: function(error){
+			console.log("에러 : " + error);
+		}
+	});
+}
+
 </script>
 
 </html>
