@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.doorisopen.myspring.Board.Domain.BoardVO;
+import org.doorisopen.myspring.Board.Domain.ReplyVO;
 import org.doorisopen.myspring.Board.Service.BoardService;
 import org.doorisopen.myspring.common.Pagination;
 import org.slf4j.Logger;
@@ -89,6 +90,8 @@ public class BoardController {
 		
 		vo = service.BoardDetail(boardIdx);
 		model.addAttribute("boardDetail", vo);
+		model.addAttribute("replyVO", new ReplyVO());
+		
 		return "/Board/boardDetail";
 	}
 	

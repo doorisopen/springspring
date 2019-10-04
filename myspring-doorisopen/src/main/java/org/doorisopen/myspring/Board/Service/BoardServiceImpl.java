@@ -3,6 +3,7 @@ package org.doorisopen.myspring.Board.Service;
 import java.util.List;
 
 import org.doorisopen.myspring.Board.Domain.BoardVO;
+import org.doorisopen.myspring.Board.Domain.ReplyVO;
 import org.doorisopen.myspring.Board.Persistence.BoardDAO;
 import org.doorisopen.myspring.common.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,52 @@ public class BoardServiceImpl implements BoardService{
 	public int BoardDelete(int boardIdx) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.BoardDelete(boardIdx);
+	}
+	
+	
+	/* *****************************
+	 *           REPLY
+	 *          
+	 *******************************/
+	
+	/* ´ñ±Û ¸®½ºÆ®
+	 * 
+	 * 
+	 */
+	@Override
+	public List<ReplyVO> ReplyRead(int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.ReplyRead(boardIdx);
+	}
+	
+	/* ´ñ±Û µî·Ï
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyCreate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.ReplyCreate(vo);
+	}
+	
+	/* ´ñ±Û ¼öÁ¤
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyUpdate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.ReplyUpdate(vo);
+	}
+	
+	/* ´ñ±Û »èÁ¦
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyDelete(int replyIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.ReplyDelete(replyIdx);
 	}
 
 	

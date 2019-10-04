@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.doorisopen.myspring.Board.Domain.BoardVO;
+import org.doorisopen.myspring.Board.Domain.ReplyVO;
 import org.doorisopen.myspring.common.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ public class BoardDAOImpl implements BoardDAO{
 	private SqlSession sqlSession;
 	
 	private static final String namespace ="org.doorisopen.myspring.Board.BoardMapper";
+	private static final String reply_namespace ="org.doorisopen.myspring.Board.ReplyMapper";
 	
 	/* 게시글 작성
 	 * 
@@ -89,6 +91,52 @@ public class BoardDAOImpl implements BoardDAO{
 	public void BoardViewCntUpdate(int boardIdx) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".BoardViewCntUpdate", boardIdx);
+	}
+
+	
+	/* *****************************
+	 *           REPLY
+	 *          
+	 *******************************/
+	
+	/* 댓글 리스트
+	 * 
+	 * 
+	 */
+	@Override
+	public List<ReplyVO> ReplyRead(int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(reply_namespace + ".ReplyRead", boardIdx);
+	}
+	
+	/* 댓글 등록
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyCreate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(reply_namespace + ".ReplyCreate", vo);
+	}
+	
+	/* 댓글 수정
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyUpdate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(reply_namespace + ".ReplyUpdate", vo);
+	}
+	
+	/* 댓글 삭제
+	 * 
+	 * 
+	 */
+	@Override
+	public int ReplyDelete(int replyIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(reply_namespace + ".ReplyDelete", replyIdx);
 	}
 
 
