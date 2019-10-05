@@ -67,12 +67,12 @@ public class RestBoardController {
 	}
 	
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-	public Map<String, Object> ReplyDelete(@RequestParam("replyIdx") int replyIdx) throws Exception {
+	public Map<String, Object> ReplyDelete(@RequestBody ReplyVO replyVO) throws Exception {
 		
 		Map<String, Object> result = new HashMap<>();
 
 		try {
-			service.ReplyDelete(replyIdx);
+			service.ReplyDelete(replyVO);
 			result.put("status", "OK");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -95,7 +95,7 @@ function showReplyList(){
 			 htmls += '<div class="replyItem"><strong>' + this.replyWriter + '</strong></div>';
 			 htmls += '<div class="replyItem">' + this.replyContent + '</div>';
 			 htmls += '<div class="replyItem"><a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.replyWriter + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a>';
-			 htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ')" >삭제</a></div>';
+			 htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ', ' + this.boardIdx + ')" >삭제</a></div>';
 			 htmls += '</div>';
 			 htmls += '</div>';
 			});	//each end
@@ -146,8 +146,7 @@ function fn_updateReply(replyIdx, replyWriter){
 			, "replyIdx": replyIdx
 	});
 
-	var headers = {"Content-Type" : "application/json"
-			, "X-HTTP-Method-Override" : "POST"};
+	var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "POST"};
 	$.ajax({
 		url: url
 		, headers : headers
@@ -180,20 +179,24 @@ function fn_editReply(replyIdx, replyWriter, replyContent){
 	$('#replyIdx' + replyIdx + ' #editContent').focus();
 }
 
-function fn_deleteReply(replyIdx){
+function fn_deleteReply(replyIdx, boardIdx){
 	var url = "/myspring/restBoard/replyDelete";
-	var paramData = {"replyIdx": replyIdx};
+	var paramData = JSON.stringify({"replyIdx": replyIdx
+		, "boardIdx": boardIdx
+	});
+	var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "POST"};
 	$.ajax({
 		url: url
+		, headers : headers
 		, data : paramData
 		, type : 'POST'
 		, dataType : 'text'
 		, success: function(result){
 			showReplyList();
 		}
-		, error: function(error){
-			console.log("에러 : " + error);
-		}
+		,  error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	 	}
 	});
 }
 

@@ -10,6 +10,8 @@ public class ReplyVO {
 	private String replyModifier;
 	private String replyModifyDate;
 	private int enabled;
+	private int replyCnt; // +1, -1
+	
 	public int getReplyIdx() {
 		return replyIdx;
 	}
@@ -58,9 +60,11 @@ public class ReplyVO {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-	
-	
-	
-
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
 	
 }

@@ -12,6 +12,7 @@ public class BoardVO {
 	private int important;
 	private int enabled;
 	private int boardViewCnt;
+	private int boardReplyCnt;
 	
 	
 	public int getBoardIdx() {
@@ -91,6 +92,14 @@ public class BoardVO {
 
 	public void setBoardViewCnt(int boardViewCnt) {
 		this.boardViewCnt = boardViewCnt;
+	}
+
+	public int getBoardReplyCnt() {
+		return boardReplyCnt;
+	}
+
+	public void setBoardReplyCnt(int boardReplyCnt) {
+		this.boardReplyCnt = boardReplyCnt;
 	}
 
 	// DI XML Test by doorisopen

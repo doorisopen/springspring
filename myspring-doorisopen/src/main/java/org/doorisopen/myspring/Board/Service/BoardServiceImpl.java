@@ -103,6 +103,8 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int ReplyCreate(ReplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		vo.setReplyCnt(1);
+		dao.BoardReplyCntUpdate(vo);
 		return dao.ReplyCreate(vo);
 	}
 	
@@ -121,9 +123,11 @@ public class BoardServiceImpl implements BoardService{
 	 * 
 	 */
 	@Override
-	public int ReplyDelete(int replyIdx) throws Exception {
+	public int ReplyDelete(ReplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.ReplyDelete(replyIdx);
+		vo.setReplyCnt(-1);
+		dao.BoardReplyCntUpdate(vo);
+		return dao.ReplyDelete(vo);
 	}
 
 	

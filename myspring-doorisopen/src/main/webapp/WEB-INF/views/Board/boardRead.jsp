@@ -28,6 +28,7 @@
 					<th colspan="5">Writer</th>
 					<th colspan="5">WriteDate</th>
 					<th colspan="2">View</th>
+					<th colspan="2">Reply</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,6 +41,7 @@
 							<td colspan="5">${boardRead.writer}</td>
 							<td colspan="5">${boardRead.writeDate}</td>
 							<td colspan="2">${boardRead.boardViewCnt}</td>
+							<td colspan="2">${boardRead.boardReplyCnt}</td>
 						</tr>
 					</c:forEach>
 				</c:when>

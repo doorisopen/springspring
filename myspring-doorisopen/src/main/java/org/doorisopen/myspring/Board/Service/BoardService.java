@@ -20,5 +20,5 @@ public interface BoardService {
 	public List<ReplyVO> ReplyRead(int boardIdx) throws Exception;
 	public int ReplyCreate(ReplyVO vo) throws Exception;
 	public int ReplyUpdate(ReplyVO vo) throws Exception;
-	public int ReplyDelete(int replyIdx) throws Exception;
+	public int ReplyDelete(ReplyVO vo) throws Exception;
 }

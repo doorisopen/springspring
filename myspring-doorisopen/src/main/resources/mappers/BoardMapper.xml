@@ -87,4 +87,14 @@
 			boardIdx = #{boardIdx}
  	</update>
  	
+ 	<!-- 게시글 조회수 증 & 감 -->
+ 	<update id="BoardReplyCntUpdate">
+    	UPDATE
+    		board
+    	SET
+    		boardReplyCnt = boardReplyCnt + #{replyCnt}
+		WHERE
+			boardIdx = #{boardIdx}
+ 	</update>
+ 	
 </mapper>

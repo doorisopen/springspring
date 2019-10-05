@@ -17,10 +17,11 @@ public interface BoardDAO {
 	public int BoardUpdate(BoardVO vo) throws Exception;
 	public int BoardDelete(int boardIdx) throws Exception;
 	public void BoardViewCntUpdate(int boardIdx) throws Exception;
+	public void BoardReplyCntUpdate(ReplyVO vo) throws Exception;
 	
 	// °Ô½Ã±Û ´ñ±Û
 	public List<ReplyVO> ReplyRead(int boardIdx) throws Exception;
 	public int ReplyCreate(ReplyVO vo) throws Exception;
 	public int ReplyUpdate(ReplyVO vo) throws Exception;
-	public int ReplyDelete(int replyIdx) throws Exception;
+	public int ReplyDelete(ReplyVO vo) throws Exception;
 }

@@ -92,6 +92,16 @@ public class BoardDAOImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".BoardViewCntUpdate", boardIdx);
 	}
+	
+	/* 게시글 댓글 수 증감
+	 * 
+	 * 
+	 */
+	@Override
+	public void BoardReplyCntUpdate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".BoardReplyCntUpdate", vo);
+	}
 
 	
 	/* *****************************
@@ -134,9 +144,9 @@ public class BoardDAOImpl implements BoardDAO{
 	 * 
 	 */
 	@Override
-	public int ReplyDelete(int replyIdx) throws Exception {
+	public int ReplyDelete(ReplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(reply_namespace + ".ReplyDelete", replyIdx);
+		return sqlSession.delete(reply_namespace + ".ReplyDelete", vo);
 	}
 
 
