@@ -26,3 +26,4 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/14e8302211efcc52dc6fcd580c64daca4770ff66"><strong>14 - 게시판 만들기④ (페이징)</strong></a>
 * [ ] <a href="#"><strong>15 - 게시판 만들기⑤ (댓글, 대댓글, 댓글 수)</strong></a>
 * [ ] <a href="#"><strong>16 - 게시판 만들기⑥ (이미지 파일 업로드, 썸네일)</strong></a>
+* [ ] <a href="#"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
