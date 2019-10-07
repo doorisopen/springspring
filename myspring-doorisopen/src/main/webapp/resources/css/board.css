@@ -21,3 +21,28 @@
 .replyItem {
 	margin-left: 10px;
 }
+
+
+.reply {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.reply th {
+  width: 100px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.reply td {
+  width: 100px;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.reply tr:nth-child(even) {
+  background-color: #dddddd;
+}

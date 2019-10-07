@@ -62,7 +62,10 @@
 		<div class="my-3 p-3 bg-white rounded shadow-sm"
 			style="padding-top: 10px">
 			<h6 class="border-bottom pb-2 mb-0">Reply list</h6>
-			<div id="replyList"></div>
+			<!--  <div id="replyList"></div> -->
+			<div style="display:inline-flex;">
+				<table id="replyList" class="reply" border="1"></table>
+			</div>
 		</div>
 
 		<!-- Reply List {e}-->
@@ -76,6 +79,7 @@ $(document).ready(function(){
 });
 
 function showReplyList(){
+	
 	var url = "/myspring/restBoard/replyRead";
 	var paramData = {"boardIdx" : "${boardDetail.boardIdx}"};
 	$.ajax({
@@ -89,15 +93,19 @@ function showReplyList(){
 		htmls += '등록된 댓글이 없습니다.';
 		} else {
 			$(result).each(function(){
-			 htmls += '<div>';
-			 htmls += '<div style="display:inline-flex;" id="replyIdx' + this.replyIdx + '">';
-			 htmls += '<div class="replyItem">' + this.replyIdx + '</div>';
-			 htmls += '<div class="replyItem"><strong>' + this.replyWriter + '</strong></div>';
-			 htmls += '<div class="replyItem">' + this.replyContent + '</div>';
-			 htmls += '<div class="replyItem"><a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.replyWriter + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a>';
-			 htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ', ' + this.boardIdx + ')" >삭제</a></div>';
-			 htmls += '</div>';
-			 htmls += '</div>';
+			 htmls += '<tr>';
+			 htmls += '<th>idx</th>';
+			 htmls += '<th>작성자</th>';
+			 htmls += '<th>내용</th>';
+			 htmls += '</tr><tr id=replyIdx'+ this.replyIdx +'>';
+			 htmls += '<td>' + this.replyIdx + '</td>';
+			 htmls += '<td><strong>' + this.replyWriter + '</strong></td>';
+			 htmls += '<td>' + this.replyContent + '</td>';
+			 htmls += '<td><a href="javascript:void(0)" onclick="fn_formReplyToReply(' + this.replyIdx + ')" style="padding-right:5px">답글</a></td>';
+			 htmls += '<td><a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.replyWriter + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a></td>';
+			 htmls += '<td><a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ', ' + this.boardIdx + ')" >삭제</a></td>';
+			 htmls += '</tr><tr>';
+			 htmls += '<td colspan="6" id="replyIdx' + this.replyIdx + '_reply"></td></tr>';
 			});	//each end
 
 		}
@@ -138,7 +146,24 @@ $(document).on('click', '#btnReplyCreate', function(){
 	});
 });
 
-
+// 댓글 수정
+function fn_editReply(replyIdx, replyWriter, replyContent){
+	
+	var htmls = "";
+	htmls += '<tr id="replyIdx' + replyIdx + '">';
+	htmls += '<td>' + replyIdx + '</td>';
+	htmls += '<td><strong>' + replyWriter + '</strong></td>';
+	htmls += '<td><textarea name="editContent" id="editContent" rows="2" cols="10">';
+	htmls += replyContent;
+	htmls += '</textarea></td>';
+	htmls += '<td><a href="javascript:void(0)" onclick="fn_updateReply(' + replyIdx + ', \'' + replyWriter + '\')" style="padding-right:5px">저장</a></td>';
+	htmls += '<td><a href="javascript:void(0)" onClick="showReplyList()">취소<a></td>';	
+	htmls += '</tr>';
+	
+	$('#replyIdx' + replyIdx).replaceWith(htmls);
+	$('#replyIdx' + replyIdx + ' #editContent').focus();
+	
+}
 function fn_updateReply(replyIdx, replyWriter){
 	var url = "/myspring/restBoard/replyUpdate";
 	var replyEditContent = $('#editContent').val();
@@ -162,23 +187,51 @@ function fn_updateReply(replyIdx, replyWriter){
 		}
 	});
 }
+// /.댓글 수정
 
-
-function fn_editReply(replyIdx, replyWriter, replyContent){
+// 대 댓글 
+function fn_formReplyToReply(replyIdx){
 	var htmls = "";
-	htmls += '<div class="media text-muted pt-3" id="replyIdx' + replyIdx + '">';
-	htmls += '<strong class="text-gray-dark">' + replyWriter + '</strong>';
-	htmls += '<textarea name="editContent" id="editContent" class="form-control" rows="3">';
-	htmls += replyContent;
-	htmls += '</textarea>';
-	htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' + replyIdx + ', \'' + replyWriter + '\')" style="padding-right:5px">저장</a>';
+	htmls += '<div>';
+	htmls += '<textarea name="replyToReplyContent" id="replyToReplyContent" rows="3"></textarea>';
+	htmls += '<input type="text" name="replyToReplyWriter" id="replyToReplyWriter" />';
+	htmls += '<a href="javascript:void(0)" onclick="fn_replyToReply(' + replyIdx + ')" style="padding-right:5px">저장</a>';
 	htmls += '<a href="javascript:void(0)" onClick="showReplyList()">취소<a>';	
 	htmls += '</div>';
 
-	$('#replyIdx' + replyIdx).replaceWith(htmls);
-	$('#replyIdx' + replyIdx + ' #editContent').focus();
+	$('#replyIdx' + replyIdx + '_reply').html(htmls);
+	$('#replyToReplyContent').focus();
 }
 
+function fn_replyToReply(replyIdx){
+	var url = "${pageContext.request.contextPath}/restBoard/replyToReply";
+	var replyToReplyContent = $('#replyToReplyContent').val();
+	var replyToReplyWriter = $('#replyToReplyWriter').val();
+	var paramData = JSON.stringify({"replyToReplyContent": replyToReplyContent
+			, "replyToReplyWriter": replyToReplyWriter
+			, "replyIdx": replyIdx
+	});
+	
+	var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "POST"};
+	$.ajax({
+		url: url
+		, headers : headers
+		, data : paramData
+		, type : 'POST'
+		, dataType : 'text'
+		, success: function(result){
+			showReplyList();	
+			$('#replyToReplyContent').val('');
+			$('#replyToReplyWriter').val('');
+		}
+		, error: function(error){
+			console.log("에러 : " + error);
+		}
+	});
+}
+// /.대댓글
+
+// 댓글 삭제
 function fn_deleteReply(replyIdx, boardIdx){
 	var url = "/myspring/restBoard/replyDelete";
 	var paramData = JSON.stringify({"replyIdx": replyIdx
@@ -199,7 +252,7 @@ function fn_deleteReply(replyIdx, boardIdx){
 	 	}
 	});
 }
-
+// /.댓글 삭제
 </script>
 
 </html>
