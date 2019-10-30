@@ -4,6 +4,7 @@ public class ReplyVO {
 	
 	private int replyIdx;
 	private int boardIdx;
+	private int replyParent;
 	private String replyContent;
 	private String replyWriter;
 	private String replyWriteDate;
@@ -11,9 +12,12 @@ public class ReplyVO {
 	private String replyModifyDate;
 	private int enabled;
 	private int replyCnt; // +1, -1
+	private int level;
+	
 	
 	private String replyToReplyContent;
 	private String replyToReplyWriter;
+	
 	
 	
 	public String getReplyToReplyContent() {
@@ -40,6 +44,12 @@ public class ReplyVO {
 	}
 	public void setBoardIdx(int boardIdx) {
 		this.boardIdx = boardIdx;
+	}
+	public int getReplyParent() {
+		return replyParent;
+	}
+	public void setReplyParent(int replyParent) {
+		this.replyParent = replyParent;
 	}
 	public String getReplyContent() {
 		return replyContent;
@@ -83,5 +93,10 @@ public class ReplyVO {
 	public void setReplyCnt(int replyCnt) {
 		this.replyCnt = replyCnt;
 	}
-	
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }

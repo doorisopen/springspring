@@ -82,6 +82,24 @@ public class RestBoardController {
 		return result;
 	}
 	
+	// 대댓글 리스트
+	@RequestMapping(value = "/replyToReplyRead", method = RequestMethod.POST)
+	public List<ReplyVO> replyToReplyRead(@RequestParam("boardIdx") int boardIdx) throws Exception {
+
+		List<ReplyVO> models = service.replyToReplyRead(boardIdx);
+		System.out.println("boardIdx : "+ boardIdx);
+		
+		for(int i = 0; i < models.size(); i++) {
+            System.out.print(models.get(i).getReplyContent() + "  ");
+            System.out.print(models.get(i).getReplyIdx() + "  ");
+            System.out.print(models.get(i).getReplyParent() + "  ");
+            System.out.print(models.get(i).getLevel() + "  ");
+            System.out.println();
+        }
+		
+		return service.replyToReplyRead(boardIdx);
+
+	}
 	// 대댓글 작성
 	@RequestMapping(value = "/replyToReplyCreate", method = RequestMethod.POST)
 	public Map<String, Object> replyToReplyCreate(@RequestBody ReplyVO replyVO) throws Exception {

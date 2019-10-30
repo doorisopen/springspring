@@ -63,6 +63,30 @@
     		replyIdx = #{replyIdx}
  	</delete>
  	
+ 	<!-- 댓글 리스트 -->
+    <select id="replyToReplyRead" resultType="ReplyVO">
+ 	 <![CDATA[
+		SELECT *
+		FROM
+		(SELECT CASE WHEN LEVEL-1 > 0 then CONCAT(CONCAT(REPEAT('    ', level - 1),'┗'), rep.replyContent)
+					ELSE rep.replyContent
+					END AS replyContent
+		     , rep.replyIdx
+		     , rep.replyParent
+		     , rep.replyWriter
+		     , rep.boardIdx
+		     , rep.enabled
+		     , fnc.level
+		FROM
+			(SELECT fnc_reply_hierarchi() AS replyIdx, @level AS level
+			 FROM (SELECT @start_with:=0, @replyIdx:=@start_with, @level:=0) vars
+					JOIN myspring.reply
+					WHERE @replyIdx IS NOT NULL) fnc
+		JOIN myspring.reply rep ON fnc.replyIdx = rep.replyIdx) hie
+		WHERE hie.boardIdx = #{boardIdx}
+		AND enabled = '1'
+ 	 ]]> 
+ 	</select>
  	
  	<!-- 대댓글 등록 -->
 	<insert id="replyToReply" parameterType="ReplyVO">
@@ -82,42 +106,6 @@
 		now()
 	)
 	</insert>
- 	<!-- 
-<select id="ReplyReadProcedure" statementType="CALLABLE" parameterType="ReplyVO">
-<![CDATA[
-CREATE FUNCTION start_with_connect_by(value INT) RETURNS INT
-NOT DETERMINISTIC
-READS SQL DATA
-BEGIN
-        DECLARE _id INT;
-        DECLARE _parent INT;
-        DECLARE CONTINUE HANDLER FOR NOT FOUND SET @id = NULL;
-
-        SET _parent = @id;
-        SET _id = -1;
-
-        IF @id IS NULL THEN
-                RETURN NULL;
-        END IF;
-
-        LOOP
-                SELECT  MIN(replyIdx)
-                INTO    @id
-                FROM    reply
-                WHERE   replyParent = _parent
-                        AND group_idx > _id;
-                IF @id IS NOT NULL OR _parent = @start_with THEN
-                        SET @level = @level + 1;
-                        RETURN @id;
-                END IF;
-                SET @level := @level - 1;
-                SELECT  group_idx, parent_idx
-                INTO    _id, _parent
-                FROM    reply
-                WHERE   group_idx = _parent;
-        END LOOP;
-END
-]]> 
-</select>
- -->
+ 	
+ 	
 </mapper>

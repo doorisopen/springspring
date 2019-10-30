@@ -39,7 +39,11 @@
 			<div>
 				<a href="/myspring/Board/boardDelete?boardIdx=${boardDetail.boardIdx}">게시글 삭제</a>
 			</div>
+			
 
+			<a href="javascript:void(0)" onclick="fn_replyToReplyRead(${boardDetail.boardIdx})" >TEST</a>
+			
+			
 		<!-- Reply Form {s} -->
 		<div style="padding-top: 10px">
 			<form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
@@ -148,6 +152,25 @@ $(document).on('click', '#btnReplyCreate', function(){
 		}
 	});
 });
+
+// TEST~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function fn_replyToReplyRead(boardIdx){
+	var url = "/myspring/restBoard/replyToReplyRead";
+	var paramData = {"boardIdx" : "${boardDetail.boardIdx}"};
+	$.ajax({
+           type: 'POST',
+           url: url,
+           data: paramData,
+           dataType: 'json',
+		   success: function(result){
+			
+		}
+		,  error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	 	}
+	});
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // 댓글 수정
 function fn_editReply(replyIdx, replyWriter, replyContent){
