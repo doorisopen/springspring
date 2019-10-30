@@ -8,6 +8,7 @@ import org.doorisopen.myspring.common.Pagination;
 
 public interface BoardService {
 	
+	// 게시글
 	public int BoardCreate(BoardVO vo) throws Exception;
 	public List<BoardVO> BoardRead(Pagination pagination) throws Exception;
 	public int getBoardListCnt() throws Exception;
@@ -21,4 +22,10 @@ public interface BoardService {
 	public int ReplyCreate(ReplyVO vo) throws Exception;
 	public int ReplyUpdate(ReplyVO vo) throws Exception;
 	public int ReplyDelete(ReplyVO vo) throws Exception;
+	
+	// 게시글 대댓글
+	public List<ReplyVO> replyToReplyRead(int boardIdx) throws Exception;
+	public int replyToReplyCreate(ReplyVO vo) throws Exception;
+	public int replyToReplyUpdate(ReplyVO vo) throws Exception;
+	public int replyToReplyDelete(ReplyVO vo) throws Exception;
 }

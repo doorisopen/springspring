@@ -12,9 +12,10 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-
-
+<!-- 
+<video width="80%" src="resources/demovideo.MP4" loop></video>
 <div>Let's Go Board</div>
+ -->
 <a href="/myspring/Board/boardRead">게시글 리스트 가기</a>
 
 </body>

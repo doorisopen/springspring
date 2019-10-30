@@ -64,4 +64,60 @@
  	</delete>
  	
  	
+ 	<!-- 대댓글 등록 -->
+	<insert id="replyToReply" parameterType="ReplyVO">
+	INSERT INTO
+	reply 
+	(
+		boardIdx,
+		replyContent,
+		replyWriter,
+		replyWriteDate,
+		replyModifyDate
+	) VALUES (
+		#{boardIdx},
+		#{replyContent},
+		#{replyWriter},
+		now(),
+		now()
+	)
+	</insert>
+ 	<!-- 
+<select id="ReplyReadProcedure" statementType="CALLABLE" parameterType="ReplyVO">
+<![CDATA[
+CREATE FUNCTION start_with_connect_by(value INT) RETURNS INT
+NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+        DECLARE _id INT;
+        DECLARE _parent INT;
+        DECLARE CONTINUE HANDLER FOR NOT FOUND SET @id = NULL;
+
+        SET _parent = @id;
+        SET _id = -1;
+
+        IF @id IS NULL THEN
+                RETURN NULL;
+        END IF;
+
+        LOOP
+                SELECT  MIN(replyIdx)
+                INTO    @id
+                FROM    reply
+                WHERE   replyParent = _parent
+                        AND group_idx > _id;
+                IF @id IS NOT NULL OR _parent = @start_with THEN
+                        SET @level = @level + 1;
+                        RETURN @id;
+                END IF;
+                SET @level := @level - 1;
+                SELECT  group_idx, parent_idx
+                INTO    _id, _parent
+                FROM    reply
+                WHERE   group_idx = _parent;
+        END LOOP;
+END
+]]> 
+</select>
+ -->
 </mapper>

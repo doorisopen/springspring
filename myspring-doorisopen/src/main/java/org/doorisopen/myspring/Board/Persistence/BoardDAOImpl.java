@@ -149,5 +149,52 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.delete(reply_namespace + ".ReplyDelete", vo);
 	}
 
+	
+	/* *****************************
+	 *        REPLY TO REPLY
+	 *          
+	 *******************************/
+	
+	/* 대댓글 리스트
+	 * 
+	 * 
+	 */
+	@Override
+	public List<ReplyVO> replyToReplyRead(int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(reply_namespace + ".replyToReplyRead", boardIdx);
+	}
+	
+	
+	/* 대댓글 등록
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyCreate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(reply_namespace + ".replyToReplyCreate", vo);
+	}
+	
+	
+	/* 대댓글 수정
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyUpdate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update(reply_namespace + ".replyToReplyUpdate", vo);
+	}
+	
 
+	/* 대댓글 삭제
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyDelete(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(reply_namespace + ".replyToReplyDelete", vo);
+	}
 }

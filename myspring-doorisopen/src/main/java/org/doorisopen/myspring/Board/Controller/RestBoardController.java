@@ -82,9 +82,9 @@ public class RestBoardController {
 		return result;
 	}
 	
-	// test....
-	@RequestMapping(value = "/replyToReply", method = RequestMethod.POST)
-	public Map<String, Object> fn_replyToReply(@RequestBody ReplyVO replyVO) throws Exception {
+	// ¥Î¥Ò±€ ¿€º∫
+	@RequestMapping(value = "/replyToReplyCreate", method = RequestMethod.POST)
+	public Map<String, Object> replyToReplyCreate(@RequestBody ReplyVO replyVO) throws Exception {
 		
 		Map<String, Object> result = new HashMap<>();
 		
@@ -94,7 +94,7 @@ public class RestBoardController {
 			System.out.println("getReplyToReplyContent: "+ replyVO.getReplyToReplyContent());
 			System.out.println("getReplyToReplyWriter: "+ replyVO.getReplyToReplyWriter());
 			System.out.println("ok");
-			// service.ReplyDelete(replyVO);
+			// service.replyToReplyCreate(replyVO);
 			result.put("status", "OK");
 		} catch (Exception e) {
 			e.printStackTrace();

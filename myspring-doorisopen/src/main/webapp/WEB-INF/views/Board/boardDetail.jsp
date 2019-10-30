@@ -78,6 +78,8 @@ $(document).ready(function(){
 	showReplyList();
 });
 
+let toggle = false;
+
 function showReplyList(){
 	
 	var url = "/myspring/restBoard/replyRead";
@@ -104,8 +106,9 @@ function showReplyList(){
 			 htmls += '<td><a href="javascript:void(0)" onclick="fn_formReplyToReply(' + this.replyIdx + ')" style="padding-right:5px">답글</a></td>';
 			 htmls += '<td><a href="javascript:void(0)" onclick="fn_editReply(' + this.replyIdx + ', \'' + this.replyWriter + '\', \'' + this.replyContent + '\' )" style="padding-right:5px">수정</a></td>';
 			 htmls += '<td><a href="javascript:void(0)" onclick="fn_deleteReply(' + this.replyIdx + ', ' + this.boardIdx + ')" >삭제</a></td>';
-			 htmls += '</tr><tr>';
-			 htmls += '<td colspan="6" id="replyIdx' + this.replyIdx + '_reply"></td></tr>';
+			 htmls += '</tr>';
+			 htmls += '<tr><td colspan="6" id="replyIdx' + this.replyIdx + '_reply"></td></tr>';
+			 htmls += '<tr><td>대댓글존</td></tr>';
 			});	//each end
 
 		}
@@ -189,25 +192,32 @@ function fn_updateReply(replyIdx, replyWriter){
 }
 // /.댓글 수정
 
-// 대 댓글 
+// 대 댓글 폼
 function fn_formReplyToReply(replyIdx){
-	var htmls = "";
-	htmls += '<div>';
-	htmls += '<textarea name="replyToReplyContent" id="replyToReplyContent" rows="3"></textarea>';
-	htmls += '<input type="text" name="replyToReplyWriter" id="replyToReplyWriter" />';
-	htmls += '<a href="javascript:void(0)" onclick="fn_replyToReply(' + replyIdx + ')" style="padding-right:5px">저장</a>';
-	htmls += '<a href="javascript:void(0)" onClick="showReplyList()">취소<a>';	
-	htmls += '</div>';
-
+	if(toggle === false){
+		toggle = true;
+		var htmls = "";
+		htmls += '<div>';
+		htmls += '<textarea name="replyToReplyContent" id="replyToReplyContent" rows="3"></textarea>';
+		htmls += '<input type="text" name="replyToReplyWriter" id="replyToReplyWriter" />';
+		htmls += '<a href="javascript:void(0)" onclick="fn_replyToReplyCreate(' + replyIdx + ')" style="padding-right:5px">저장</a>';
+		htmls += '<a href="javascript:void(0)" onClick="showReplyList()">취소<a>';	
+		htmls += '</div>';
+		$('#replyIdx' + replyIdx + '_reply').html(htmls);
+		$('#replyToReplyContent').focus();
+	} else {
+		toggle = false;
+		var htmls = "";
+	}
 	$('#replyIdx' + replyIdx + '_reply').html(htmls);
-	$('#replyToReplyContent').focus();
 }
-
-function fn_replyToReply(replyIdx){
-	var url = "${pageContext.request.contextPath}/restBoard/replyToReply";
+// 대댓글 작성
+function fn_replyToReplyCreate(replyIdx){
+	var url = "${pageContext.request.contextPath}/restBoard/replyToReplyCreate";
 	var replyToReplyContent = $('#replyToReplyContent').val();
 	var replyToReplyWriter = $('#replyToReplyWriter').val();
-	var paramData = JSON.stringify({"replyToReplyContent": replyToReplyContent
+	var paramData = JSON.stringify({
+			"replyToReplyContent": replyToReplyContent
 			, "replyToReplyWriter": replyToReplyWriter
 			, "replyIdx": replyIdx
 	});
@@ -229,7 +239,7 @@ function fn_replyToReply(replyIdx){
 		}
 	});
 }
-// /.대댓글
+// /.대댓글 작성
 
 // 댓글 삭제
 function fn_deleteReply(replyIdx, boardIdx){

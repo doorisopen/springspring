@@ -76,7 +76,7 @@ public class BoardServiceImpl implements BoardService{
 	 */
 	@Override
 	public int BoardDelete(int boardIdx) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return dao.BoardDelete(boardIdx);
 	}
 	
@@ -131,4 +131,47 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
+	
+	
+	/* 댓글 리스트
+	 * 
+	 * 
+	 */
+	@Override
+	public List<ReplyVO> replyToReplyRead(int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.replyToReplyRead(boardIdx);
+	}
+	
+	/* 대댓글 등록
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyCreate(ReplyVO vo) throws Exception {
+		// replyGroup, depth 설정
+		return dao.replyToReplyCreate(vo);
+	}
+	
+	/* 대댓글 수정
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyUpdate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.replyToReplyUpdate(vo);
+	}
+	
+	/* 대댓글 삭제
+	 * 
+	 * 
+	 */
+	@Override
+	public int replyToReplyDelete(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		vo.setReplyCnt(-1);
+		dao.BoardReplyCntUpdate(vo);
+		return dao.replyToReplyDelete(vo);
+	}
 }
