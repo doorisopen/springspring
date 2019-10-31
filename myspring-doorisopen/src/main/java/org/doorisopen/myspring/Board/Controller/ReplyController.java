@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/restBoard")
-public class RestBoardController {
+@RequestMapping(value="/Reply")
+public class ReplyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
@@ -82,7 +82,7 @@ public class RestBoardController {
 		return result;
 	}
 	
-	// 대댓글 리스트
+	// 대댓글 리스트 TEST
 	@RequestMapping(value = "/replyToReplyRead", method = RequestMethod.POST)
 	public List<ReplyVO> replyToReplyRead(@RequestParam("boardIdx") int boardIdx) throws Exception {
 
@@ -105,14 +105,9 @@ public class RestBoardController {
 	public Map<String, Object> replyToReplyCreate(@RequestBody ReplyVO replyVO) throws Exception {
 		
 		Map<String, Object> result = new HashMap<>();
-		
-		
+
 		try {
-			System.out.println("replyIdx: "+ replyVO.getReplyIdx());
-			System.out.println("getReplyToReplyContent: "+ replyVO.getReplyToReplyContent());
-			System.out.println("getReplyToReplyWriter: "+ replyVO.getReplyToReplyWriter());
-			System.out.println("ok");
-			// service.replyToReplyCreate(replyVO);
+			service.replyToReplyCreate(replyVO);
 			result.put("status", "OK");
 		} catch (Exception e) {
 			e.printStackTrace();

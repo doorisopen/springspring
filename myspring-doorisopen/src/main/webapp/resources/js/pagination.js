@@ -1,5 +1,5 @@
 /**
- * Pagination 
+ * Pagination JS
  * made by doorisopen
  */
 

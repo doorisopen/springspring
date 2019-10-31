@@ -28,6 +28,4 @@ public interface BoardDAO {
 	// 게시글 대댓글
 	public List<ReplyVO> replyToReplyRead(int boardIdx) throws Exception;
 	public int replyToReplyCreate(ReplyVO vo) throws Exception;
-	public int replyToReplyUpdate(ReplyVO vo) throws Exception;
-	public int replyToReplyDelete(ReplyVO vo) throws Exception;
 }

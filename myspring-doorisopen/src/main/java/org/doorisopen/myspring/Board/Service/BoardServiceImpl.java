@@ -133,7 +133,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	
-	/* 댓글 리스트
+	/* 댓글 리스트 TEST
 	 * 
 	 * 
 	 */
@@ -149,29 +149,11 @@ public class BoardServiceImpl implements BoardService{
 	 */
 	@Override
 	public int replyToReplyCreate(ReplyVO vo) throws Exception {
-		// replyGroup, depth 설정
+		vo.setReplyCnt(1);
+		dao.BoardReplyCntUpdate(vo);
 		return dao.replyToReplyCreate(vo);
 	}
 	
-	/* 대댓글 수정
-	 * 
-	 * 
-	 */
-	@Override
-	public int replyToReplyUpdate(ReplyVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.replyToReplyUpdate(vo);
-	}
 	
-	/* 대댓글 삭제
-	 * 
-	 * 
-	 */
-	@Override
-	public int replyToReplyDelete(ReplyVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		vo.setReplyCnt(-1);
-		dao.BoardReplyCntUpdate(vo);
-		return dao.replyToReplyDelete(vo);
-	}
+	
 }

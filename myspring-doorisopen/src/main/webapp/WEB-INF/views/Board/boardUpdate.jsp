@@ -12,6 +12,10 @@
 	 	<form action="/myspring/Board/boardUpdate?boardIdx=${boardUpdate.boardIdx}" method="POST">
 			<table>
 				<tr>
+					<th>게시글 번호</th>
+					<td><input type="text" id="boardIdx" name="boardIdx" value="${boardUpdate.boardIdx}" placeholder="boardIdx" disabled/></td>
+				</tr>
+				<tr>
 					<th>게시글 제목</th>
 					<td><input type="text" id="boardTitle" name="boardTitle" value="${boardUpdate.boardTitle}" placeholder="boardTitle" /></td>
 				</tr>

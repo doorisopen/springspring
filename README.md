@@ -4,10 +4,12 @@
 
 
 ### Development Environment
-* Spring tool suite-4.1.2
-* Apache tomcat 9.0v
-* Java 1.8
-* Maven
+* IDE: Spring tool suite-4.1.2
+* WAS: Apache tomcat 9.0v
+* Language: Java 1.8
+* DataBase: MySQL
+* Framework: MyBatis, Spring 4
+* Build Tool: Maven
 
 ### Development Stage
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/d129bbf2a8d3a585fb650110f8713f4ec2a65bac"><strong>1 - Init Setting</strong></a>
@@ -27,3 +29,20 @@
 * [ ] <a href="#"><strong>15 - 게시판 만들기⑤ (댓글, 대댓글, 댓글 수)</strong></a>
 * [ ] <a href="#"><strong>16 - 게시판 만들기⑥ (이미지 파일 업로드, 썸네일)</strong></a>
 * [ ] <a href="#"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
+
+```
+스프링 메시지로 다국어처리
+배치처리
+메일보내기
+문자보내기
+에러페이지 처리 적용
+파일 zip 일괄다운
+세션처리
+암호화
+달력/일정
+에디터
+auto complete
+엑셀 export
+PDF export
+그래프
+```

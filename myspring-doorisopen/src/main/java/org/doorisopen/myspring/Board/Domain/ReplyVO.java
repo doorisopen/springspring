@@ -18,21 +18,7 @@ public class ReplyVO {
 	private String replyToReplyContent;
 	private String replyToReplyWriter;
 	
-	
-	
-	public String getReplyToReplyContent() {
-		return replyToReplyContent;
-	}
-	public void setReplyToReplyContent(String replyToReplyContent) {
-		this.replyToReplyContent = replyToReplyContent;
-	}
-	public String getReplyToReplyWriter() {
-		return replyToReplyWriter;
-	}
-	public void setReplyToReplyWriter(String replyToReplyWriter) {
-		this.replyToReplyWriter = replyToReplyWriter;
-	}
-	
+
 	public int getReplyIdx() {
 		return replyIdx;
 	}
@@ -98,5 +84,18 @@ public class ReplyVO {
 	}
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	
+	public String getReplyToReplyContent() {
+		return replyToReplyContent;
+	}
+	public void setReplyToReplyContent(String replyToReplyContent) {
+		this.replyToReplyContent = replyToReplyContent;
+	}
+	public String getReplyToReplyWriter() {
+		return replyToReplyWriter;
+	}
+	public void setReplyToReplyWriter(String replyToReplyWriter) {
+		this.replyToReplyWriter = replyToReplyWriter;
 	}
 }
