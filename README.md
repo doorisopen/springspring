@@ -29,6 +29,7 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/b64b398c29c1141e81b662062ae86e5ed4d5bc1f"><strong>15 - 게시판 만들기⑤ (댓글, 대댓글, 댓글 수)</strong></a>
 * [ ] <a href="#"><strong>16 - 게시판 만들기⑥ (이미지 파일 업로드, 썸네일)</strong></a>
 * [ ] <a href="#"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
+* [ ] <a href="#"><strong>18 - 게시판 만들기⑧ (결제)</strong></a>
 
 ## 스프링 버킷 목록
 |  <center>Spring</center> |  <center>Bucket</center> |  <center>List</center> |
@@ -37,4 +38,4 @@
 | 문자보내기 | 에러페이지 처리 적용 | 파일 zip 일괄다운 | 
 | 세션처리 | 암호화 | 달력/일정 | 
 | 그래프 | 엑셀 export | 에디터 |
-| PDF export | 결제 | ... |
+| PDF export | ~~결제~~ | ... |
