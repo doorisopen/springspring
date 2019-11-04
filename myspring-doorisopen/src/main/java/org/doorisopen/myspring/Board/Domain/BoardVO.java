@@ -13,6 +13,9 @@ public class BoardVO {
 	private int enabled;
 	private int boardViewCnt;
 	private int boardReplyCnt;
+	private String boardFilePath;
+	
+	
 	
 	
 	public int getBoardIdx() {
@@ -100,6 +103,13 @@ public class BoardVO {
 
 	public void setBoardReplyCnt(int boardReplyCnt) {
 		this.boardReplyCnt = boardReplyCnt;
+	}
+	public String getBoardFilePath() {
+		return boardFilePath;
+	}
+
+	public void setBoardFilePath(String boardFilePath) {
+		this.boardFilePath = boardFilePath;
 	}
 
 	// DI XML Test by doorisopen

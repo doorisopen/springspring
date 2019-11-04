@@ -13,12 +13,14 @@
 		boardTitle,
 		boardContent,
 		writer,
-		writeDate
+		writeDate,
+		boardFilePath
 	) VALUES (
 		#{boardTitle},
 		#{boardContent},
 		#{writer},
-		now()
+		now(),
+		#{boardFilePath}
 	)
 	</insert>
 	
@@ -31,6 +33,9 @@
 			board
 		WHERE
 			enabled = '1'
+		ORDER BY 
+			boardIdx
+		DESC
 		LIMIT #{startList}, #{listSize}
  	 ]]> 
  	</select>
@@ -61,8 +66,9 @@
     	SET
     		boardTitle = #{boardTitle}
     		, boardContent = #{boardContent}
-			, modifier = #{modifier}
+			, modifier = #{writer}
 			, modifyDate = now()
+			, boardFilePath = #{boardFilePath}
 		WHERE
 			boardIdx = #{boardIdx}
  	</update>

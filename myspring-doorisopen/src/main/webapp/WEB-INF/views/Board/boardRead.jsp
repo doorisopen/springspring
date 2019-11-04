@@ -6,13 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/board.css">
-
-
-<script>
-
-</script>
 <title>DOOP</title>
+<link rel="stylesheet" href="../resources/css/board.css">
 </head>
 <body>
 	<!-- div center -->

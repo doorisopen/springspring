@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -31,8 +30,24 @@
 				<tr>
 					<th>게시글 작성자</th>
 					<td><input type="text" id="writer" name="writer" value="${boardDetail.writer}" placeholder="writer" disabled /></td>
-					
 				</tr>
+				
+				<c:choose>
+					<c:when test="${fn:length(boardDetail.boardFilePath) > 0}">
+						<tr>
+							<th>이미지 파일</th>
+							<td><img src="${pageContext.request.contextPath }${boardDetail.boardFilePath}" style="width:150px"></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<th>파일</th>
+							<td>등록된 파일이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+					
+				
 			</table>
 			<div>
 				<a href="/myspring/Board/boardUpdateView?boardIdx=${boardDetail.boardIdx}">수정하기</a>
