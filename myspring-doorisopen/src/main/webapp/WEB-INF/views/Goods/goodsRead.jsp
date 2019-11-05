@@ -7,14 +7,54 @@
 <head>
 <meta charset="UTF-8">
 <title>DOOP</title>
-<link rel="stylesheet" href="../resources/css/board.css">
+<link rel="stylesheet" href="../resources/css/goods.css">
 </head>
 <body>
 	<!-- div center -->
 	<div align=center>
-	 <header>상품 리스트</header>
- 		<a href="/myspring">홈으로</a>
+	 <header><h1>상품 리스트</h1></header>
+ 		<a href="/myspring">^홈으로^</a>
 	 	<!-- Goods List -->
+		 <section>
+			<article>
+				<c:choose>
+					<c:when test="${fn:length(goodsRead) > 0}">
+						<c:forEach items="${goodsRead }" var="goodsRead" varStatus="rowcnt">
+							<div class="img">
+								<a href="/myspring/Goods/goodsDetail?goodsIdx=${goodsRead.goodsIdx}">
+									<c:choose>
+										<c:when test="${fn:length(goodsRead.goodsFilePath) > 0}">
+											<img src="${pageContext.request.contextPath }${goodsRead.goodsFilePath}" width="350" height="250">
+										</c:when>
+										<c:otherwise>	
+											등록된 사진이 없습니다.
+										</c:otherwise>
+									</c:choose>
+									<div class="desc">번호: ${goodsRead.goodsIdx}</div>
+									<div class="desc">제목: ${goodsRead.goodsTitle}</div>
+									<div class="desc">등록자: ${goodsRead.writer}</div>
+									<div class="desc">등록일자: ${goodsRead.writeDate}</div>
+									<div class="desc">조회수: ${goodsRead.goodsViewCnt}</div>
+									<div class="desc">리뷰수: ${goodsRead.goodsReplyCnt}</div>
+								</a>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="6">조회된 결과가 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				
+			</article>
+		</section>
+		<!-- ./Goods List -->
+		
+		<!-- TABLE FORM
+		
 		<table border="1">
 			<thead>
 				<tr>
@@ -48,7 +88,9 @@
 			</c:choose>
 			</tbody>
 		</table>
-		<!-- ./Goods List -->
+		
+		 -->
+
 		<!-- pagination{s} -->
 
 		<div class="paginationBox">
@@ -76,7 +118,7 @@
 		<!-- pagination{e} -->
 
 		<div>
-			<a href="/myspring/Goods/goodsCreateView">상품 등록하기</a>
+			<a href="/myspring/Goods/goodsCreateView">^상품 등록하기^</a>
 		</div>
 		
 	</div>

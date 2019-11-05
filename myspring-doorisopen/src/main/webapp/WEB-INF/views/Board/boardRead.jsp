@@ -12,8 +12,8 @@
 <body>
 	<!-- div center -->
 	<div align=center>
-	 <header>게시글 리스트</header>
- 		<a href="/myspring">홈으로</a>
+	 <header><h1>게시글 리스트</h1></header>
+ 		<a href="/myspring">^홈으로^</a>
 	 	<!-- Board List -->
 		<table border="1">
 			<thead>
@@ -76,7 +76,7 @@
 		<!-- pagination{e} -->
 
 		<div>
-			<a href="/myspring/Board/boardCreateView">게시글 등록하기</a>
+			<a href="/myspring/Board/boardCreateView">^게시글 등록하기^</a>
 		</div>
 		
 	</div>
