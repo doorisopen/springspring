@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.doorisopen.myspring.Goods.GoodsMapper">
+
+	<!-- 상품 등록 -->
+	<insert id="GoodsCreate" parameterType="GoodsVO">
+	INSERT INTO
+	goods 
+	(
+		goodsTitle,
+		goodsContent,
+		writer,
+		writeDate,
+		goodsFilePath
+	) VALUES (
+		#{goodsTitle},
+		#{goodsContent},
+		#{writer},
+		now(),
+		#{goodsFilePath}
+	)
+	</insert>
+	
+    <!-- 상품 리스트 -->
+    <select id="GoodsRead" resultType="GoodsVO">
+ 	 <![CDATA[
+		SELECT
+			*
+		FROM
+			goods
+		WHERE
+			enabled = '1'
+		ORDER BY 
+			goodsIdx
+		DESC
+		LIMIT #{startList}, #{listSize}
+ 	 ]]> 
+ 	</select>
+ 	
+ 	<!-- Pagination ListCnt -->
+ 	<select id="getGoodsListCnt" resultType="int">
+		SELECT
+			count(*) AS listCnt
+		FROM
+			goods
+ 	</select>
+ 	
+    
+    <!-- 상품 조회 -->
+    <select id="GoodsDetail" resultType="GoodsVO">
+    	SELECT
+    		*
+    	FROM
+    		goods
+    	WHERE
+    		goodsIdx = #{goodsIdx}
+ 	</select>
+ 	
+    <!-- 상품 수정 -->
+    <update id="GoodsUpdate">
+    	UPDATE
+    		goods
+    	SET
+    		goodsTitle = #{goodsTitle}
+    		, goodsContent = #{goodsContent}
+			, modifier = #{writer}
+			, modifyDate = now()
+			, goodsFilePath = #{goodsFilePath}
+		WHERE
+			goodsIdx = #{goodsIdx}
+ 	</update>
+ 	
+    <!-- 상품 삭제 -->
+    <delete id="GoodsDelete">
+    	UPDATE
+    		goods
+    	SET
+    		enabled = '0'
+    	WHERE
+    		goodsIdx = #{goodsIdx}
+ 	</delete>
+ 	
+ 	<!-- 상품 조회수 증가 -->
+ 	<update id="GoodsViewCntUpdate">
+    	UPDATE
+    		goods
+    	SET
+    		goodsViewCnt = goodsViewCnt + 1
+		WHERE
+			goodsIdx = #{goodsIdx}
+ 	</update>
+ 	
+ 	<!-- 상품 리뷰 증 & 감 -->
+ 	<update id="GoodsReviewCntUpdate">
+    	UPDATE
+    		goods
+    	SET
+    		goodsReviewCnt = goodsReviewCnt + #{replyCnt}
+		WHERE
+			goodsIdx = #{goodsIdx}
+ 	</update>
+ 	
+</mapper>

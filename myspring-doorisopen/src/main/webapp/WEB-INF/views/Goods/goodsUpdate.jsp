@@ -13,38 +13,38 @@
 <body>
 	<div align=center>
 	 <header>게시글 수정하기</header>
-	 	<form action="/myspring/Board/boardUpdate?boardIdx=${boardUpdate.boardIdx}" method="POST" enctype="multipart/form-data">
+	 	<form action="/myspring/Goods/goodsUpdate?goodsIdx=${goodsUpdate.goodsIdx}" method="POST" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<th>게시글 번호</th>
-					<td><input type="text" id="boardIdx" name="boardIdx" value="${boardUpdate.boardIdx}" placeholder="boardIdx" disabled/></td>
+					<td><input type="text" id="goodsIdx" name="goodsIdx" value="${goodsUpdate.goodsIdx}" placeholder="goodsIdx" disabled/></td>
 				</tr>
 				<tr>
 					<th>게시글 제목</th>
-					<td><input type="text" id="boardTitle" name="boardTitle" value="${boardUpdate.boardTitle}" placeholder="boardTitle" /></td>
+					<td><input type="text" id="goodsTitle" name="goodsTitle" value="${goodsUpdate.goodsTitle}" placeholder="goodsTitle" /></td>
 				</tr>
 				<tr>
 					<th>게시글 내용</th>
-					<td><input type="text" id="boardContent" name="boardContent" value="${boardUpdate.boardContent}" placeholder="boardContent" /></td>
+					<td><input type="text" id="goodsContent" name="goodsContent" value="${goodsUpdate.goodsContent}" placeholder="goodsContent" /></td>
 				</tr>
 				<tr>
 					<th>게시글 작성자</th>
-					<td><input type="text" id="writer" name="writer" value="${boardUpdate.writer}" placeholder="writer" /></td>
+					<td><input type="text" id="writer" name="writer" value="${goodsUpdate.writer}" placeholder="writer" /></td>
 				</tr>
 				
 				<c:choose>
-					<c:when test="${fn:length(boardUpdate.boardFilePath) > 0}">
+					<c:when test="${fn:length(goodsUpdate.goodsFilePath) > 0}">
 						<tr>
 							<th>이미지 파일</th>
 							<td>
 								<input type="file" name="file" id="file"/>
-								<input type="hidden" name="boardFilePath" value="${boardUpdate.boardFilePath}"/>
+								<input type="hidden" name="goodsFilePath" value="${goodsUpdate.goodsFilePath}"/>
 								<div class="select_img">
 									<img src=""/>
 								</div>
-								<img name="boardFilePath" src="${pageContext.request.contextPath }${boardUpdate.boardFilePath}" style="width:150px">
+								<img name="goodsFilePath" src="${pageContext.request.contextPath }${goodsUpdate.goodsFilePath}" style="width:150px">
 							</td>
-							<td><a href="javascript:void(0)" onclick="fn_deleteBoardImg()" >이미지 삭제</a></td>
+							<td><a href="javascript:void(0)" onclick="fn_deleteGoodsImg()" >이미지 삭제</a></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
@@ -69,7 +69,7 @@
 			</div>
 		</form>
 			<div>
-				<a href="/myspring/Board/boardRead">게시글 리스트 가기</a>
+				<a href="/myspring/Goods/goodsRead">게시글 리스트 가기</a>
 			</div>
 	</div>
 </body>

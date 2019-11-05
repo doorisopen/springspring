@@ -49,6 +49,9 @@
 	<context:component-scan base-package="org.doorisopen.myspring.Board.Service"></context:component-scan>
 	<context:component-scan base-package="org.doorisopen.myspring.Board.Persistence"></context:component-scan>
 	
+	<context:component-scan base-package="org.doorisopen.myspring.Goods.Service"></context:component-scan>
+	<context:component-scan base-package="org.doorisopen.myspring.Goods.Persistence"></context:component-scan>
+	
 	<context:component-scan base-package="org.doorisopen.myspring.common"></context:component-scan>
 	
 </beans>

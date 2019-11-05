@@ -12,9 +12,9 @@
 <body>
 	<!-- div center -->
 	<div align=center>
-	 <header>게시글 리스트</header>
+	 <header>상품 리스트</header>
  		<a href="/myspring">홈으로</a>
-	 	<!-- Board List -->
+	 	<!-- Goods List -->
 		<table border="1">
 			<thead>
 				<tr>
@@ -28,15 +28,15 @@
 			</thead>
 			<tbody>
 			<c:choose>
-				<c:when test="${fn:length(boardRead) > 0}">
-					<c:forEach items="${boardRead }" var="boardRead" varStatus="rowcnt">
+				<c:when test="${fn:length(goodsRead) > 0}">
+					<c:forEach items="${goodsRead }" var="goodsRead" varStatus="rowcnt">
 						<tr>
-							<td colspan="2">${boardRead.boardIdx}</td>
-							<td colspan="10"><a href="/myspring/Board/boardDetail?boardIdx=${boardRead.boardIdx}">${boardRead.boardTitle}</a></td>
-							<td colspan="5">${boardRead.writer}</td>
-							<td colspan="5">${boardRead.writeDate}</td>
-							<td colspan="2">${boardRead.boardViewCnt}</td>
-							<td colspan="2">${boardRead.boardReplyCnt}</td>
+							<td colspan="2">${goodsRead.goodsIdx}</td>
+							<td colspan="10"><a href="/myspring/Goods/goodsDetail?goodsIdx=${goodsRead.goodsIdx}">${goodsRead.goodsTitle}</a></td>
+							<td colspan="5">${goodsRead.writer}</td>
+							<td colspan="5">${goodsRead.writeDate}</td>
+							<td colspan="2">${goodsRead.goodsViewCnt}</td>
+							<td colspan="2">${goodsRead.goodsReplyCnt}</td>
 						</tr>
 					</c:forEach>
 				</c:when>
@@ -48,7 +48,7 @@
 			</c:choose>
 			</tbody>
 		</table>
-		<!-- ./Board List -->
+		<!-- ./Goods List -->
 		<!-- pagination{s} -->
 
 		<div class="paginationBox">
@@ -76,7 +76,7 @@
 		<!-- pagination{e} -->
 
 		<div>
-			<a href="/myspring/Board/boardCreateView">게시글 등록하기</a>
+			<a href="/myspring/Goods/goodsCreateView">상품 등록하기</a>
 		</div>
 		
 	</div>
