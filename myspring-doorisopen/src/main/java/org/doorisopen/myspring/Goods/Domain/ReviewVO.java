@@ -1,7 +1,9 @@
 package org.doorisopen.myspring.Goods.Domain;
 
 public class ReviewVO {
-	
+/* * * * * * * * *
+
+ * * * * * * * */
 	private int reviewIdx;
 	private int goodsIdx;
 	private int reviewParent;

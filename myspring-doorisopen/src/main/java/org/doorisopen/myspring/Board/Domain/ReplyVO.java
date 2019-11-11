@@ -1,6 +1,23 @@
 package org.doorisopen.myspring.Board.Domain;
 
 public class ReplyVO {
+
+/* * * * * * * * *
+# 댓글 테이블 생성(2019.10.31 수정(group, depth 삭제))
+CREATE TABLE myspring.reply (
+	replyIdx int auto_increment not null primary key,
+    boardIdx int not null,
+    replyParent int not null default 0,
+    replyContent text not null,
+    replyWriter varchar(255) not null,
+    replyWriteDate datetime not null default now(),
+    replyModifier varchar(255),
+    replyModifyDate datetime not null default now(),
+    enabled int not null default 1,
+    constraint reply_board_fk
+    foreign key (boardIdx) references myspring.board (boardIdx)
+);
+ * * * * * * * */
 	
 	private int replyIdx;
 	private int boardIdx;

@@ -8,6 +8,7 @@
         <typeAlias type="org.doorisopen.myspring.Member.Domain.MemberVO" alias="MemberVO"/> 
         <typeAlias type="org.doorisopen.myspring.Board.Domain.BoardVO" alias="BoardVO"/>
         <typeAlias type="org.doorisopen.myspring.Board.Domain.ReplyVO" alias="ReplyVO"/>
-        <typeAlias type="org.doorisopen.myspring.Goods.Domain.GoodsVO" alias="GoodsVO"/> 
+        <typeAlias type="org.doorisopen.myspring.Goods.Domain.GoodsVO" alias="GoodsVO"/>
+        <typeAlias type="org.doorisopen.myspring.Goods.Domain.CartVO" alias="CartVO"/>
   </typeAliases>   
 </configuration>

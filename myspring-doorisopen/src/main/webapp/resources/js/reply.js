@@ -4,11 +4,24 @@
  */
 
 $(document).ready(function(){
-	showReplyList();
+	ReplyToggle();
+	//showReplyList();
 });
 var boardIdx = document.getElementById('boardIdx').value;;
 let toggle = false;
 // 댓글 리스트
+
+function ReplyToggle() {
+	
+	if(toggle === false) {
+		var htmls = "";
+		toggle = true;
+	} else {
+		showReplyList();
+		toggle = false;
+	}
+	$("#replyList").html(htmls);
+}
 function showReplyList(){
 	
 	var url = "/myspring/Reply/replyRead";
@@ -147,7 +160,6 @@ function fn_deleteReply(replyIdx, boardIdx){
 // 대 댓글 폼
 function fn_formReplyToReply(replyIdx){
 	if(toggle === false){
-		toggle = true;
 		var htmls = "";
 		htmls += '<div>';
 		htmls += '<textarea name="replyToReplyContent" id="replyToReplyContent" rows="3"></textarea>';
@@ -157,9 +169,10 @@ function fn_formReplyToReply(replyIdx){
 		htmls += '</div>';
 		$('#replyIdx' + replyIdx + '_reply').html(htmls);
 		$('#replyToReplyContent').focus();
+		toggle = true;
 	} else {
-		toggle = false;
 		var htmls = "";
+		toggle = false;
 	}
 	$('#replyIdx' + replyIdx + '_reply').html(htmls);
 }

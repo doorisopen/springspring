@@ -13,7 +13,8 @@
 	<!-- div center -->
 	<div align=center>
 	 <header><h1>상품 리스트</h1></header>
- 		<a href="/myspring">^홈으로^</a>
+ 		<a href="/myspring">^홈으로^</a>||
+ 		<a href="/myspring/Cart/cartRead">^장바구니( # 개)^</a>
 	 	<!-- Goods List -->
 		 <section>
 			<article>
@@ -24,7 +25,7 @@
 								<a href="/myspring/Goods/goodsDetail?goodsIdx=${goodsRead.goodsIdx}">
 									<c:choose>
 										<c:when test="${fn:length(goodsRead.goodsFilePath) > 0}">
-											<img src="${pageContext.request.contextPath }${goodsRead.goodsFilePath}" width="350" height="250">
+											<img src="${pageContext.request.contextPath }${goodsRead.goodsFilePath}" width="350px" height="250px">
 										</c:when>
 										<c:otherwise>	
 											등록된 사진이 없습니다.

@@ -49,16 +49,22 @@
 					
 				
 			</table>
-			<div>
-				<a href="/myspring/Goods/goodsUpdateView?goodsIdx=${goodsDetail.goodsIdx}">수정하기</a>
+			<div style="background-color: pink; width: 300px;">
+				<div>
+					<a href="/myspring/Goods/goodsCartAdd?goodsIdx=${goodsDetail.goodsIdx}">장바구니에 담기</a>
+				</div>
+			</div>	
+			<div style="background-color: darkseagreen; width: 300px;">	
+				<div>
+					<a href="/myspring/Goods/goodsRead">상품 리스트 가기</a>
+				</div>
+				<div>
+					<a href="/myspring/Goods/goodsUpdateView?goodsIdx=${goodsDetail.goodsIdx}">수정하기</a>
+				</div>
+				<div>
+					<a href="/myspring/Goods/goodsDelete?goodsIdx=${goodsDetail.goodsIdx}">상품 삭제</a>
+				</div>
 			</div>
-			<div>
-				<a href="/myspring/Goods/goodsRead">상품 리스트 가기</a>
-			</div>
-			<div>
-				<a href="/myspring/Goods/goodsDelete?goodsIdx=${goodsDetail.goodsIdx}">상품 삭제</a>
-			</div>
-			
 
 			<a href="javascript:void(0)" onclick="fn_reviewToReviewRead(${goodsDetail.goodsIdx})" >TEST</a>
 			

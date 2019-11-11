@@ -1,7 +1,26 @@
 package org.doorisopen.myspring.Goods.Domain;
 
 public class GoodsVO {
-
+	
+/* * * * * * * * *
+# 상품 테이블 생성
+CREATE TABLE myspring.goods (
+	 goodsIdx int not null auto_increment,
+     goodsTitle varchar(255) not null,
+     goodsContent text not null,
+     writer varchar(255) not null,
+     writeDate datetime not null default now(),
+     modifier varchar(255),
+     modifyDate datetime,
+     important int not null default 0,
+     enabled int not null default 1,
+     goodsViewCnt int not null default 0,
+     goodsReviewCnt int not null default 0,
+     goodsFilePath varchar(255),
+     PRIMARY KEY(goodsIdx)
+);
+ * * * * * * * */
+	
 	private int goodsIdx;
 	private String goodsTitle;
 	private String goodsContent;

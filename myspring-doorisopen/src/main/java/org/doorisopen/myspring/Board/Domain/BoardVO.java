@@ -1,6 +1,25 @@
 package org.doorisopen.myspring.Board.Domain;
 
 public class BoardVO {
+
+/* * * * * * * * *
+# 게시글 테이블 생성
+CREATE TABLE myspring.board (
+	 boardIdx int not null auto_increment,
+     boardTitle varchar(255) not null,
+     boardContent text not null,
+     writer varchar(255) not null,
+     writeDate datetime not null default now(),
+     modifier varchar(255),
+     modifyDate datetime,
+     important int not null default 0,
+     enabled int not null default 1,
+     boardViewCnt int not null default 0,
+     boardReplyCnt int not null default 0,
+     boardFilePath varchar(255),
+     PRIMARY KEY(boardIdx)
+);
+ * * * * * * * */
 	
 	private int boardIdx;
 	private String boardTitle;

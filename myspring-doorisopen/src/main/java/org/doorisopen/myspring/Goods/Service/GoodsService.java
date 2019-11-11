@@ -2,6 +2,7 @@ package org.doorisopen.myspring.Goods.Service;
 
 import java.util.List;
 
+import org.doorisopen.myspring.Goods.Domain.CartVO;
 import org.doorisopen.myspring.Goods.Domain.GoodsVO;
 import org.doorisopen.myspring.Goods.Domain.ReviewVO;
 import org.doorisopen.myspring.common.Pagination;
@@ -27,4 +28,5 @@ public interface GoodsService {
 	// ªÛ«∞ ¥Î¥Ò±€
 	public List<ReviewVO> reviewToReviewRead(int goodsIdx) throws Exception;
 	public int reviewToReviewCreate(ReviewVO vo) throws Exception;
+	
 }

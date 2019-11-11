@@ -49,16 +49,17 @@
 					
 				
 			</table>
-			<div>
-				<a href="/myspring/Board/boardUpdateView?boardIdx=${boardDetail.boardIdx}">수정하기</a>
+			<div style="background-color: darkseagreen; width: 300px;">
+				<div>
+					<a href="/myspring/Board/boardRead">게시글 리스트 가기</a>
+				</div>
+				<div>
+					<a href="/myspring/Board/boardUpdateView?boardIdx=${boardDetail.boardIdx}">수정하기</a>
+				</div>
+				<div>
+					<a href="/myspring/Board/boardDelete?boardIdx=${boardDetail.boardIdx}">게시글 삭제</a>
+				</div>
 			</div>
-			<div>
-				<a href="/myspring/Board/boardRead">게시글 리스트 가기</a>
-			</div>
-			<div>
-				<a href="/myspring/Board/boardDelete?boardIdx=${boardDetail.boardIdx}">게시글 삭제</a>
-			</div>
-			
 
 			<a href="javascript:void(0)" onclick="fn_replyToReplyRead(${boardDetail.boardIdx})" >TEST</a>
 			
@@ -81,9 +82,12 @@
 
 
 		<!-- Reply List {s}-->
-		<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-			<h6 class="border-bottom pb-2 mb-0">Reply list</h6>
+		<div style="padding-top: 10px">
+			<h6>Reply list</h6>
 			<c:set var="boardIdx" value='${boardDetail.boardIdx}'/>
+			<div>
+				<a href="javascript:void(0)" onclick="ReplyToggle()">▼댓글(${boardDetail.boardReplyCnt})개 보기▼</a>
+			</div>
 			<!--  <div id="replyList"></div> -->
 			<div style="display:inline-flex;">
 				<table id="replyList" class="reply" border="1"></table>
