@@ -20,6 +20,9 @@ CREATE TABLE myspring.board (
      modifyDate datetime,
      important int not null default 0,
      enabled int not null default 1,
+     boardViewCnt int not null default 0,
+     boardReplyCnt int not null default 0,
+     boardFilePath varchar(255),
      PRIMARY KEY(boardIdx)
 );
 
@@ -34,13 +37,19 @@ CREATE TABLE myspring.reply (
     replyModifier varchar(255),
     replyModifyDate datetime not null default now(),
     enabled int not null default 1,
-    boardViewCnt int not null default 0,
-    boardReplyCnt int not null default 0,
-    boardFilePath varchar(255),
     constraint reply_board_fk
     foreign key (boardIdx) references myspring.board (boardIdx)
 );
 
+# 장바구니 테이블 생성
+CREATE TABLE myspring.cart (
+	cartIdx int not null auto_increment primary key,
+    writer varchar(255) not null,
+    goodsIdx int not null,
+    goodsAmount int not null,
+    constraint cart_goods_fk
+    foreign key (goodsIdx) references myspring.goods (goodsIdx)
+);
 # 상품 테이블 생성
 CREATE TABLE myspring.goods (
 	 goodsIdx int not null auto_increment,
