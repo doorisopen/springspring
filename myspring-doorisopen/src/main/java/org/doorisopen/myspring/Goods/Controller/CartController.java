@@ -45,10 +45,10 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		try {
 			if(isGoodsExist == 0) {
 				System.out.println("CartAdd success");
-				// service.CartAdd(vo);
+				service.CartAdd(vo);
 			} else {
 				System.out.println("CartUpdate success");
-				// service.CartUpdate(vo);
+				service.CartUpdate(vo);
 			}
 
 		} catch(Exception e) {

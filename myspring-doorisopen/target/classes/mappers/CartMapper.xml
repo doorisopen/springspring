@@ -26,9 +26,10 @@
 			c.writer AS writer,
 			c.goodsAmount,
 			g.goodsIdx AS goodsIdx,
-			g.goodsTitle AS goodsTitle,
+			g.goodsTitle AS goodsTitle
 		FROM
-			myspring.cart c, myspring.goods g
+			cart c,
+			goods g
 		WHERE
 			g.goodsIdx = c.goodsIdx
 		AND 
@@ -67,14 +68,12 @@
  	
  	<!-- 장바구니 확인 -->
  	<select id="isGoodsExist" resultType="int">
-		SELECT
-			count(*) AS isGoodsExist
-		FROM
-			cart
-		WHERE
-			writer = #{writer}
-		AND 
-			goodsIdx = #{goodsIdx}
+ 	<![CDATA[
+		SELECT count(*) AS isGoodsExist
+		FROM cart 
+		WHERE writer = #{writer} 
+		AND goodsIdx = #{goodsIdx}
+	]]>
  	</select>
  	
 </mapper>

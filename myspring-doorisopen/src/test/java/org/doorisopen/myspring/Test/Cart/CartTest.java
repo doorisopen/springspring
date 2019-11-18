@@ -27,24 +27,13 @@ public class CartTest {
 	private CartService service;
 	
 	@Test
-	public void cartAddTest() {
+	public void cartAddTest() throws Exception {
 		System.out.println("This is cartAddTest Test...");
 		CartVO vo = new CartVO();
 		vo.setGoodsIdx(10);
 		vo.setWriter("as");
-		try {
-			int isGoodsExist = service.isGoodsExist(vo);
-			System.out.println("isGoodsExist: "+isGoodsExist);
-			if(isGoodsExist == 0) {
-				System.out.print("상품이  존재 하지 않습니다.");
-			} else {
-				System.out.print("상품이 이미 존재 합니다.");
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int isGoodsExist = service.isGoodsExist(vo);
+		System.out.println("isGoodsExist: "+isGoodsExist);
 		
 	}
 	

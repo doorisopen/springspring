@@ -18,12 +18,21 @@ public class BoardCRUDTest {
 	
 	Pagination pagination = new Pagination();
 	
+	
+	
+	@Test
+	public void paginationTest() throws Exception {
+		System.out.println("This is paginationTest...");
+		
+		int listCnt = service.getBoardListCnt();
+		System.out.println("listCnt: "+listCnt);
+	}
+	
 	/* TEST 1. 게시글 등록 
 	 * 
 	 *
 	 */
 	// Test 가 필요한곳에 아래의 태그 입력한다.
-	@Test
 	public void boardCreateTest() {
 		System.out.println("This is boardCreateTest...");
 		BoardVO vo = new BoardVO();

@@ -1,11 +1,12 @@
 package org.doorisopen.myspring.Goods.Persistence;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.doorisopen.myspring.Goods.Domain.CartVO;
-import org.doorisopen.myspring.Goods.Domain.GoodsVO;
 import org.doorisopen.myspring.common.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,8 +40,10 @@ public class CartDAOImpl implements CartDAO{
 		// TODO Auto-generated method stub
 		List<CartVO> CartRead = new ArrayList<CartVO>();
 		// CartRead = sqlSession.selectList(namespace + ".CartRead", pagination);
-		String writer = "as";
-		CartRead = sqlSession.selectList(namespace + ".CartRead", writer);
+		Map<String, Object> map = new HashMap<String, Object>();
+		String writer = "admin";
+		map.put("writer", writer);
+		CartRead = sqlSession.selectList(namespace + ".CartRead", map);
 		return CartRead;
 	}
 	
@@ -76,17 +79,17 @@ public class CartDAOImpl implements CartDAO{
 	}
 
 	
-	/* 장바구니 확인
+	/* 장바구니 물품 확인
 	 * 
 	 * 
 	 */
 	@Override
 	public int isGoodsExist(CartVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.print("dao -> "+ sqlSession.selectOne(namespace + ".isGoodsExist"));
-		System.out.print("getGoodsIdx: "+vo.getGoodsIdx() +" getWriter: "+vo.getWriter() );
-		
-		return sqlSession.selectOne(namespace + ".isGoodsExist");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("writer", vo.getWriter());
+		map.put("goodsIdx", vo.getGoodsIdx());
+		return sqlSession.selectOne(namespace + ".isGoodsExist",map);
 	}
 	
 

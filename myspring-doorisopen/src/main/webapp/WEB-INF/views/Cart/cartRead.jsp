@@ -22,9 +22,10 @@
 					<c:when test="${fn:length(cartRead) > 0}">
 						<c:forEach items="${cartRead }" var="cartRead" varStatus="rowcnt">
 							<div class="img">
-								<div class="desc">번호: ${cartRead.goodsIdx}</div>
-								<div class="desc">제목: ${cartRead.goodsTitle}</div>
+							<div class="desc">장바구니 번호: ${cartRead.cartIdx}</div>
+								<div class="desc">상품 번호: ${cartRead.goodsIdx}</div>
 								<div class="desc">등록자: ${cartRead.writer}</div>
+								<div class="desc">상품 수량: ${cartRead.goodsAmount}</div>
 							</div>
 						</c:forEach>
 					</c:when>
