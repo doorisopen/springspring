@@ -38,7 +38,9 @@ public class CartDAOImpl implements CartDAO{
 	public List<CartVO> CartRead(Pagination pagination) throws Exception {
 		// TODO Auto-generated method stub
 		List<CartVO> CartRead = new ArrayList<CartVO>();
-		CartRead = sqlSession.selectList(namespace + ".CartRead", pagination);
+		// CartRead = sqlSession.selectList(namespace + ".CartRead", pagination);
+		String writer = "as";
+		CartRead = sqlSession.selectList(namespace + ".CartRead", writer);
 		return CartRead;
 	}
 	
@@ -71,6 +73,20 @@ public class CartDAOImpl implements CartDAO{
 	public int CartDelete(int goodsIdx) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(namespace + ".CartDelete", goodsIdx);
+	}
+
+	
+	/* 장바구니 확인
+	 * 
+	 * 
+	 */
+	@Override
+	public int isGoodsExist(CartVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.print("dao -> "+ sqlSession.selectOne(namespace + ".isGoodsExist"));
+		System.out.print("getGoodsIdx: "+vo.getGoodsIdx() +" getWriter: "+vo.getWriter() );
+		
+		return sqlSession.selectOne(namespace + ".isGoodsExist");
 	}
 	
 

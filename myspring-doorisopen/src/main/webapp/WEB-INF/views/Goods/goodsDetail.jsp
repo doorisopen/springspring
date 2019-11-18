@@ -32,6 +32,24 @@
 					<td><input type="text" id="writer" name="writer" value="${goodsDetail.writer}" placeholder="writer" disabled /></td>
 				</tr>
 				
+				<tr>
+					<th>상품 수량</th>
+					
+					<td>
+						<form action="/myspring/Cart/cartAdd" method="post">
+							<input type="hidden" name="goodsIdx" value="${goodsDetail.goodsIdx}"/>
+							<input type="hidden" name="writer" value="${goodsDetail.writer}"/>
+							<select name="goodsAmount">
+								<c:forEach begin="1" end="10" var="i">
+									<option value="${i }">${i }</option>
+								</c:forEach>
+							</select>&nbsp;개
+							<input type="submit" value="장바구니 담기"/>
+						</form>
+					</td>
+					
+				</tr>
+				
 				<c:choose>
 					<c:when test="${fn:length(goodsDetail.goodsFilePath) > 0}">
 						<tr>
@@ -48,12 +66,7 @@
 				</c:choose>
 					
 				
-			</table>
-			<div style="background-color: pink; width: 300px;">
-				<div>
-					<a href="/myspring/Goods/goodsCartAdd?goodsIdx=${goodsDetail.goodsIdx}">장바구니에 담기</a>
-				</div>
-			</div>	
+			</table>	
 			<div style="background-color: darkseagreen; width: 300px;">	
 				<div>
 					<a href="/myspring/Goods/goodsRead">상품 리스트 가기</a>

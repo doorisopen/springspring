@@ -15,4 +15,5 @@ public interface CartDAO {
 	public int getCartListCnt() throws Exception;
 	public int CartUpdate(CartVO vo) throws Exception;
 	public int CartDelete(int goodsIdx) throws Exception;
+	public int isGoodsExist(CartVO vo) throws Exception;
 }

@@ -63,6 +63,16 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return dao.CartDelete(goodsIdx);
 	}
+	
+	/* 장바구니 확인
+	 * 
+	 * 
+	 */
+	@Override
+	public int isGoodsExist(CartVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.isGoodsExist(vo);
+	}
 
 	
 }

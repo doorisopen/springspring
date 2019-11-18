@@ -17,6 +17,14 @@ CREATE TABLE myspring.cart (
 	private String writer;
 	private int goodsIdx;
 	private int goodsAmount;
+	private int isGoodsExist;
+	
+	public int getIsGoodsExist() {
+		return isGoodsExist;
+	}
+	public void setIsGoodsExist(int isGoodsExist) {
+		this.isGoodsExist = isGoodsExist;
+	}
 	public int getCartIdx() {
 		return cartIdx;
 	}

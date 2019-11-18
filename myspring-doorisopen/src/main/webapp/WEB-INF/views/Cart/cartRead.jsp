@@ -18,10 +18,22 @@
 	 	<!-- Goods List -->
 		 <section>
 			<article>
-				
-				
-				
-				
+				<c:choose>
+					<c:when test="${fn:length(cartRead) > 0}">
+						<c:forEach items="${cartRead }" var="cartRead" varStatus="rowcnt">
+							<div class="img">
+								<div class="desc">번호: ${cartRead.goodsIdx}</div>
+								<div class="desc">제목: ${cartRead.goodsTitle}</div>
+								<div class="desc">등록자: ${cartRead.writer}</div>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="6">조회된 결과가 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</article>
 		</section>
 		<!-- ./Goods List -->
@@ -51,7 +63,7 @@
 				</c:if>
 			</ul>
 		</div>
-		<!-- pagination{e} -->
+		<!-- pagination{e}  -->
 		
 	</div>
 	<!-- ./div center -->

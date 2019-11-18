@@ -28,20 +28,29 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	private CartService service;
 
 	
-	
+	// https://doublesprogramming.tistory.com/137 참고 중
 	/* 장바구니 추가
 	 * 
 	 *
 	 */
 	@RequestMapping(value = "/cartAdd", method = RequestMethod.POST)
-	public String GoodsCreate(Model model,
-			HttpServletRequest request,
+	public String cartAdd(Model model, HttpServletRequest request,
 			@ModelAttribute CartVO vo) throws Exception {
 	
+		int isGoodsExist = service.isGoodsExist(vo);
+		System.out.println("isGoodsExist : "+ isGoodsExist);
+		System.out.println("Writer : "+ vo.getWriter());
+		System.out.println("GoodsIdx : "+ vo.getGoodsIdx());
+		System.out.println("GoodsAmount : "+ vo.getGoodsAmount());
 		try {
-			
-			
-			
+			if(isGoodsExist == 0) {
+				System.out.println("CartAdd success");
+				// service.CartAdd(vo);
+			} else {
+				System.out.println("CartUpdate success");
+				// service.CartUpdate(vo);
+			}
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -54,7 +63,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	 *
 	 */
 	@RequestMapping(value = "/cartRead", method = RequestMethod.GET)
-	public String CartRead(Model model,CartVO vo
+	public String CartRead(Model model, CartVO vo
 			, @RequestParam(required = false, defaultValue = "1") int page
 			, @RequestParam(required = false, defaultValue = "1") int range
 			) throws Exception {
@@ -79,7 +88,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	 *
 	 */
 	@RequestMapping(value = "/cartUpdate", method = RequestMethod.POST)
-	public String GoodsModify(HttpServletRequest request,
+	public String CartUpdate(HttpServletRequest request,
 			@ModelAttribute CartVO vo,
 			@ModelAttribute("goodsIdx") int goodsIdx) throws Exception {
 		
@@ -94,7 +103,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	 *
 	 */
 	@RequestMapping(value = "/cartDelete", method = RequestMethod.GET)
-	public String GoodsDelete(@ModelAttribute("goodsIdx") int goodsIdx) throws Exception {
+	public String CartDelete(@ModelAttribute("goodsIdx") int goodsIdx) throws Exception {
 		service.CartDelete(goodsIdx);
 		return "redirect:/Cart/boardRead";
 	}
