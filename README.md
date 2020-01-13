@@ -39,4 +39,5 @@
 | 세션처리 | 암호화 | 달력/일정 | 
 | 그래프 | 엑셀 export | 에디터 |
 | PDF export | ~~결제~~ | 실시간 채팅 데이터처리 |
-| Spring Boot | ... | ... |
+| Spring Boot | JPA | ORM |
+| TDD | Clean Code | ... |
