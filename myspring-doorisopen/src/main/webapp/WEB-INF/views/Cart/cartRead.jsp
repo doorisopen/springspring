@@ -28,7 +28,19 @@
 								<div class="desc">장바구니 번호: ${cartRead.cartIdx}</div>
 								<div class="desc">상품 번호: ${cartRead.goodsIdx}</div>
 								<div class="desc">등록자: ${cartRead.writer}</div>
-								<div class="desc">상품 수량: ${cartRead.goodsAmount}</div>
+								<div class="desc">상품 수량: 
+								<form action="/myspring/Cart/cartUpdate" method="post">
+									<input type="hidden" name="goodsIdx" value="${cartRead.goodsIdx}"/>
+									<input type="hidden" name="writer" value="${cartRead.writer}"/>
+									<select name="goodsAmount">
+										<c:forEach begin="1" end="10" var="i">
+											<option value="${i }" <c:if test="${cartRead.goodsAmount == i}">selected</c:if>>${i }</option>
+										</c:forEach>
+									</select>&nbsp;개
+									<input type="submit" value="상품 수량 수정"/>
+								</form>
+								
+								</div>
 								<div class="desc"><button onClick="fn_deleteCartGoods('${cartRead.writer}',${cartRead.goodsIdx})">상품 삭제</button></div>
 							</div>
 						</c:forEach>

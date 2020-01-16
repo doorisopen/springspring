@@ -94,10 +94,9 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	 */
 	@RequestMapping(value = "/cartUpdate", method = RequestMethod.POST)
 	public String CartUpdate(HttpServletRequest request,
-			@ModelAttribute CartVO vo,
-			@ModelAttribute("goodsIdx") int goodsIdx) throws Exception {
+			@ModelAttribute CartVO vo) throws Exception {
 		
-    	
+		System.out.println("CartUpdate success");
 		service.CartUpdate(vo);
 		
 		return "redirect:/Cart/cartRead";
