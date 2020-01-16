@@ -64,6 +64,8 @@
     		cart
     	WHERE
     		writer = #{writer}
+    	AND
+    		goodsIdx = #{goodsIdx}
  	</delete>
  	
  	<!-- 장바구니 확인 -->

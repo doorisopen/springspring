@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* cart.css
+ *	
+ * made by doorisopen
+ */
+
+
+a {
+	text-decoration: none;
+}
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: blue; text-decoration: none;}
+
+.buy {
+	display: inline-block;
+}

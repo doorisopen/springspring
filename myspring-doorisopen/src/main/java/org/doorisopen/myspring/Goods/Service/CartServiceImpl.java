@@ -59,9 +59,9 @@ public class CartServiceImpl implements CartService {
 	 * 
 	 */
 	@Override
-	public int CartDelete(int goodsIdx) throws Exception {
+	public int CartDelete(CartVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.CartDelete(goodsIdx);
+		return dao.CartDelete(vo);
 	}
 	
 	/* 장바구니 확인

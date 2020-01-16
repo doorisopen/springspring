@@ -47,6 +47,5 @@ function agree_check() {
 <input type="button" value="회원가입" onclick="agree_check()"/>
 </form>
 
-
 </body>
 </html>

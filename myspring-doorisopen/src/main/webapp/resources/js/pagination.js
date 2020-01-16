@@ -1,13 +1,13 @@
 /**
  * Pagination JS
- * made by doorisopen
+ * made by doorisopen ifyoudontmindme.Board
  */
 
 //이전 버튼 이벤트
 function fn_prev(page, range, rangeSize) {
 	var page = ((range - 2) * rangeSize) + 1;
 	var range = range - 1;
-	var url = "/myspring/Board/boardRead";
+	var url = "/ifyoudontmindme/Board/boardList";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	location.href = url;
@@ -15,7 +15,7 @@ function fn_prev(page, range, rangeSize) {
 
 //페이지 번호 클릭
 function fn_pagination(page, range, rangeSize, searchType, keyword) {
-	var url = "/myspring/Board/boardRead";
+	var url = "/ifyoudontmindme/Board/boardList";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	location.href = url;
@@ -25,7 +25,7 @@ function fn_pagination(page, range, rangeSize, searchType, keyword) {
 function fn_next(page, range, rangeSize) {
 	var page = parseInt((range * rangeSize)) + 1;
 	var range = parseInt(range) + 1;
-	var url = "/myspring/Board/boardRead";
+	var url = "/ifyoudontmindme/Board/boardList";
 	url = url + "?page=" + page;
 	url = url + "&range=" + range;
 	location.href = url;

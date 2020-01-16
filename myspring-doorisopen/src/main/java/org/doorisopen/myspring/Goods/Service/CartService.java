@@ -14,7 +14,7 @@ public interface CartService {
 	public List<CartVO> CartRead(Pagination pagination) throws Exception;
 	public int getCartListCnt() throws Exception;
 	public int CartUpdate(CartVO vo) throws Exception;
-	public int CartDelete(int goodsIdx) throws Exception;
+	public int CartDelete(CartVO vo) throws Exception;
 	public int isGoodsExist(CartVO vo) throws Exception;
 	
 }

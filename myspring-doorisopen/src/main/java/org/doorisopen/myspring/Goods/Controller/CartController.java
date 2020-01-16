@@ -1,11 +1,14 @@
 package org.doorisopen.myspring.Goods.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.doorisopen.myspring.Board.Controller.BoardController;
 import org.doorisopen.myspring.Goods.Domain.CartVO;
+import org.doorisopen.myspring.Goods.Domain.GoodsVO;
 import org.doorisopen.myspring.Goods.Service.CartService;
 import org.doorisopen.myspring.common.Pagination;
 import org.slf4j.Logger;
@@ -14,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value="/Cart")
@@ -102,9 +107,19 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	 * 
 	 *
 	 */
-	@RequestMapping(value = "/cartDelete", method = RequestMethod.GET)
-	public String CartDelete(@ModelAttribute("goodsIdx") int goodsIdx) throws Exception {
-		service.CartDelete(goodsIdx);
-		return "redirect:/Cart/boardRead";
+	@RequestMapping(value = "/cartDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> CartDelete(@RequestBody CartVO vo) throws Exception {
+		Map<String, Object> result = new HashMap<>();
+		try {
+			service.CartDelete(vo);
+			result.put("status", "OK");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("status", "False");
+
+		}
+		
+		return result;
 	}
 }

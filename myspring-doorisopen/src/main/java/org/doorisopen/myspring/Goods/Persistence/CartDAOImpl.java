@@ -73,9 +73,9 @@ public class CartDAOImpl implements CartDAO{
 	 * 
 	 */
 	@Override
-	public int CartDelete(int goodsIdx) throws Exception {
+	public int CartDelete(CartVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(namespace + ".CartDelete", goodsIdx);
+		return sqlSession.delete(namespace + ".CartDelete", vo);
 	}
 
 	
