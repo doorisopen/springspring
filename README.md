@@ -28,7 +28,7 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/14e8302211efcc52dc6fcd580c64daca4770ff66"><strong>14 - 게시판 만들기④ (페이징)</strong></a>
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/b64b398c29c1141e81b662062ae86e5ed4d5bc1f"><strong>15 - 게시판 만들기⑤ (댓글, 대댓글, 댓글 수)</strong></a>
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/95650fde13746ca7443187bcfee1f1f12f4eac5b"><strong>16 - 게시판 만들기⑥ (이미지 파일 업로드, 썸네일)</strong></a>
-* [ ] <a href="#"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
+* [x] <a href="https://github.com/doorisopen/SpringSpring/tree/56832a42b5948e54a4e6aceb1256625f220a9207"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
 * [ ] <a href="#"><strong>18 - 게시판 만들기⑧ (사용자 - 로그인, 회원가입)</strong></a>
 * [ ] <a href="#"><strong>19 - 게시판 만들기⑨ (결제)</strong></a>
 
