@@ -31,7 +31,7 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/56832a42b5948e54a4e6aceb1256625f220a9207"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
 * [ ] <a href="#"><strong>18 - 게시판 만들기⑧ (사용자 - 로그인, 회원가입)</strong></a>
 * [ ] <a href="#"><strong>19 - 게시판 만들기⑨ (결제)</strong></a>
-* [ ] <a href="#"><strong>20 - Chatting</strong></a>
+* [x] <a href="https://github.com/doorisopen/SpringSpring/tree/63c77e869f06faa82ff8ab653168d4e41b05ab3d"><strong>20 - Chatting</strong></a>
 
 ## 스프링 버킷 목록
 |  <center>Spring</center> |  <center>Bucket</center> |  <center>List</center> |
