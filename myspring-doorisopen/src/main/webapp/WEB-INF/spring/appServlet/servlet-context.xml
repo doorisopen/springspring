@@ -55,5 +55,6 @@
 	<context:component-scan base-package="org.doorisopen.myspring.Member.Controller" />
 	<context:component-scan base-package="org.doorisopen.myspring.Board.Controller" />
 	<context:component-scan base-package="org.doorisopen.myspring.Goods.Controller" />
+	<context:component-scan base-package="org.doorisopen.myspring.Chat" />
 	
 </beans:beans>

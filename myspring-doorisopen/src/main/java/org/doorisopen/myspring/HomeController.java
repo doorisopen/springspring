@@ -36,4 +36,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public String chatHome(Locale locale, Model model) {
+		logger.info("Welcome Chat home!");
+		
+		return "/Chat/chatMain";
+	}
+	
 }

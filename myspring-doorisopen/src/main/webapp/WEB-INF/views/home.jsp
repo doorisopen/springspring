@@ -32,7 +32,7 @@
 			<a href="#"><button>사용자(미구현)</button></a>
 		</div>
 		<div class="example">
-			<a href="#"><button>채팅(미구현)</button></a>
+			<a href="/myspring/chat"><button>채팅</button></a>
 		</div>
 	</div>
 </div>

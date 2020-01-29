@@ -31,6 +31,7 @@
 * [x] <a href="https://github.com/doorisopen/SpringSpring/tree/56832a42b5948e54a4e6aceb1256625f220a9207"><strong>17 - 게시판 만들기⑦ (장바구니)</strong></a>
 * [ ] <a href="#"><strong>18 - 게시판 만들기⑧ (사용자 - 로그인, 회원가입)</strong></a>
 * [ ] <a href="#"><strong>19 - 게시판 만들기⑨ (결제)</strong></a>
+* [ ] <a href="#"><strong>20 - Chatting</strong></a>
 
 ## 스프링 버킷 목록
 |  <center>Spring</center> |  <center>Bucket</center> |  <center>List</center> |
@@ -39,6 +40,6 @@
 | 문자보내기 | 에러페이지 처리 적용 | 파일 zip 일괄다운 | 
 | 세션처리 | 암호화 | 달력/일정 | 
 | 그래프 | 엑셀 export | 에디터 |
-| PDF export | ~~결제~~ | 실시간 채팅 데이터처리 |
-| Spring Boot | JPA | ORM |
-| TDD | Clean Code | ... |
+| PDF export | ~~결제~~ | 실시간 채팅 데이터수집(Kafka) |
+| ~~Spring Boot~~ | JPA | ORM |
+| TDD | Clean Code | ~~Chatting~~ |
