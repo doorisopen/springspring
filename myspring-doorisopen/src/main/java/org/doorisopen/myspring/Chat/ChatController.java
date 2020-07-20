@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
  
 import javax.websocket.RemoteEndpoint.Basic;
+// Reference https://coding-start.tistory.com/category
 
 @Controller
 @ServerEndpoint(value="/echo.do") // /myspring/echo.do url 요청을 통해 웹소켓에 접속함을 의미하는 애너테이션
